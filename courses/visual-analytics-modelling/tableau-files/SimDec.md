@@ -1,0 +1,31 @@
+- SimDec is model agnostic - it can be applied to any model. 
+    - SimDec can be used in any range of science, engineering, and social domains.
+- The core requirements for SimDec:
+    - 1. The model must produce outputs that can be recorded alongside their corresponding inputs (input-output data pairs)
+    - 2. The model must be runnable multiple times, try not to have a model that is computationally expensive (Monte Carlo simulation compatibility)
+- Limitations of SimDec:
+    - Binary outputs or categorical outputs produce limited visualization
+        - SimDec is based on histograms which need continuous (or at least multi-valued) outputs to be meaningful
+            - With only 3 output categories, you'd only get 3 bins on the histogram
+    - Number of input variables is limited
+        - Decomposing more than 2-3 input variables makes histograms unreadable
+            - Limited to 2-3 inputs to visualize simultaneously in one decomposition
+        - A solution: Run multiple SimDec analyses with each run examining different subsest of 2-3 inputs
+- SimDec only needs to know the inputs and outputs, it doesn't matter if the model is a black box
+- SimDec is a powerful method for understanding complex models where I suspect interaction effects between variables
+- Complex models often have interactions (real-world phenomena are not usually perfectly additive)
+- Traditional sensitivity analysis (examining variables independently; one variable at a time) gives averages that doesn't perfectly describe how variables work together
+- SimDec visualizes whether variabls are additive, multiplicative, conditional, or antagonistic
+- Traditional sensitivity analysis
+    - Analyzing variables independently
+        - Change x_1 to see how output y changes while keeping x_2 constant
+        - Change x_2 to see how output y changes while keeping x_1 constant
+        - First-order effect: how much variance x_1 explains alone 
+        - (only reports first-order effects)
+    - Variance based sensitivity analysis (sobol indices)
+        - calculate how much of the output's variance is explained by each input
+        - X_1 explains 40% of variance, x_2 explains 30% of variance
+        - Tells me which variables are important, ranked by their individual contribution
+- An interaction effect occurs when the impact of one variable depends on the value of another variable
+- SimDec visualizes both first-order and second-order effects simultaneously
+- If the second-order sensitivity index is 0, there is no interaction (this is an additive model)

@@ -1,67 +1,115 @@
-import datetime
-from zoneinfo import ZoneInfo
 from google.adk.agents import Agent
+import json
+from typing import Dict, List, Optional
 
-def get_weather(city: str) -> dict:
-    """Retrieves the current weather report for a specified city.
-
-    Args:
-        city (str): The name of the city for which to retrieve the weather report.
-
-    Returns:
-        dict: status and result or error msg.
+# Define your tool function FIRST
+def get_info(year: int) -> dict:
     """
-    if city.lower() == "new york":
+    Retrieves information about MBAN cohort members for a specific year.
+    
+    Args:
+        year (int): The graduation year of the MBAN cohort
+        
+    Returns:
+        dict: Information about the cohort including employment stats, job titles, and industries
+    """
+    
+    # Mock data for now - you'll replace this with actual data retrieval
+    # from schulich.dotsnet.org/c/schulich/members or your data source
+    
+    mock_data = {
+        2023: {
+            "total_alumni": 70,
+            "employment_rate": 92,
+            "job_titles": {
+                "Business Analyst": 50,
+                "Securities Analyst": 17,
+                "Investment Analyst": 10,
+                "Consultant": 8,
+                "Data Scientist": 2.5
+            },
+            "industries": {
+                "Financials": 70,
+                "Pharmaceuticals": 12,
+                "Telecommunications": 5
+            },
+            "trending_topics": [
+                "networking opportunities",
+                "mentorship seeking",
+                "career transitions to tech"
+            ],
+            "connection_opportunities": [
+                {
+                    "alumni": "Alexandr Wang MBAN '23",
+                    "connection": "Steve Ballmer, Director of Growth at Silicon Valley Bank",
+                    "reason": "hiring referrals in fintech"
+                }
+            ]
+        },
+        2024: {
+            "total_alumni": 85,
+            "employment_rate": 88,
+            "job_titles": {
+                "Data Analyst": 45,
+                "Business Intelligence Analyst": 20,
+                "Product Analyst": 15,
+                "Consultant": 10,
+                "Risk Analyst": 5
+            },
+            "industries": {
+                "Technology": 55,
+                "Financial Services": 25,
+                "Consulting": 10
+            },
+            "trending_topics": [
+                "AI/ML applications",
+                "product management transitions",
+                "startup opportunities"
+            ],
+            "connection_opportunities": [
+                {
+                    "alumni": "Sarah Chen MBAN '24",
+                    "connection": "Jennifer Liu, VP Analytics at Shopify",
+                    "reason": "analytics leadership opportunities"
+                }
+            ]
+        }
+    }
+    
+    # Check if we have data for the requested year
+    if year in mock_data:
         return {
             "status": "success",
-            "report": (
-                "The weather in New York is sunny with a temperature of 25 degrees"
-                " Celsius (77 degrees Fahrenheit)."
-            ),
+            "data": mock_data[year]
         }
     else:
         return {
             "status": "error",
-            "error_message": f"Weather information for '{city}' is not available.",
+            "message": f"No data available for MBAN cohort of {year}. Available years: {list(mock_data.keys())}"
         }
 
-
-def get_current_time(city: str) -> dict:
-    """Returns the current time in a specified city.
-
-    Args:
-        city (str): The name of the city for which to retrieve the current time.
-
-    Returns:
-        dict: status and result or error msg.
-    """
-
-    if city.lower() == "new york":
-        tz_identifier = "America/New_York"
-    else:
-        return {
-            "status": "error",
-            "error_message": (
-                f"Sorry, I don't have timezone information for {city}."
-            ),
-        }
-
-    tz = ZoneInfo(tz_identifier)
-    now = datetime.datetime.now(tz)
-    report = (
-        f'The current time in {city} is {now.strftime("%Y-%m-%d %H:%M:%S %Z%z")}'
-    )
-    return {"status": "success", "report": report}
-
-
-root_agent = Agent(
-    name="weather_time_agent",
+# Now define your agent with the tool
+root_agent = Agent(  # Changed to 'root_agent' - REQUIRED name
     model="gemini-2.0-flash",
-    description=(
-        "Agent to answer questions about the time and weather in a city."
-    ),
-    instruction=(
-        "You are a helpful agent who can answer user questions about the time and weather in a city."
-    ),
-    tools=[get_weather, get_current_time],
+    name="dashboard_agent",
+    description="Answers user questions about what unique MBAN cohorts are doing professionally",
+    instruction="""You are an agent that provides a summary of what unique MBAN (Master of Business Analytics) cohorts are currently doing professionally. 
+    
+    When a user asks for information about a MBAN cohort:
+    1. Identify the year of the cohort from the user's query
+    2. Use the 'get_info' tool to retrieve cohort data
+    3. Respond clearly with a brief and concise summary (no more than five sentences)
+    
+    Include in your response:
+    - Year of the cohort and total number of alumni
+    - Employment rate
+    - Top 5 job titles with percentages
+    - Top 3 industries with percentages
+    - Trending topics among the cohort
+    - Potential connection opportunities
+    
+    Format your response professionally and make it easy to scan.
+    
+    If data is not available for the requested year, inform the user politely and mention which years are available.""",
+    tools=[get_info]  # Now this references the function defined above
 )

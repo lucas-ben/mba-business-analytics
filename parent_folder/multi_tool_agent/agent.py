@@ -16,6 +16,28 @@ def get_info(year: int) -> dict:
     Returns:
         dict: Information about the cohort including member details, skills, and networking
     """
+    # helper function to normalize city location 
+    def normalize_city(location: str) -> str:
+        if not location:
+            return "NaN"
+
+        location = location.lower()
+
+        city_map = {
+            "toronto": "Toronto",
+            "greater toronto area": "Toronto",
+            "gta": "Toronto",
+            "kitchener": "Kitchener",
+            "waterloo": "Waterloo",
+            "mississauga": "Mississauga",
+            "vancouver": "Vancouver"
+        }
+
+        for keyword, city in city_map.items():
+            if keyword in location:
+                return city
+
+        return "Canada" if "canada" in location else "NaN"
     
     # example dataset 
     members_database = {
@@ -86,60 +108,43 @@ def get_info(year: int) -> dict:
     
     # collect data for members of a unique cohort
     all_skills = []
-    focus_areas = []
     locations = []
     
+    # data collection loop
     for member in cohort_members:
-        all_skills.extend(member.get("skills", []))
-        focus_areas.append(member.get("focus_area", ""))
+        all_skills.extend(member.get("skills", [])) # get() returns an empty list if the key doesn't exist
         locations.append(member.get("location", ""))
     
-    # Count top skills
-    skill_counts = Counter(all_skills)
-    top_skills = dict(skill_counts.most_common(7))
+    # count and rank skills
+    skill_counts = Counter(all_skills) # count how many times each item appears in the list
+    top_skills = dict(skill_counts.most_common(5)) # create a dictionary with the 5 most common skills
     
-    # Count focus areas
-    focus_counts = Counter(focus_areas)
-    top_focus_areas = dict(focus_counts.most_common(3))
-    
-    # Identify common themes
+    # identify common characteristics
     trending_topics = []
     if "AI" in str(all_skills) or "Machine Learning" in str(all_skills):
-        trending_topics.append("AI & Machine Learning applications")
-    if "Business Intelligence" in str(all_skills) or "Data Visualization" in str(all_skills):
-        trending_topics.append("Data visualization and business intelligence")
+        trending_topics.append("AI & Machine Learning")
+    if "Business Intelligence" in str(all_skills) or "Business Analytics" in str(all_skills) or "Data Visualization" in str(all_skills):
+        trending_topics.append("BI & Data Visualization")
     if any("Networking" in member.get("asks", []) for member in cohort_members):
-        trending_topics.append("Professional networking and community building")
+        trending_topics.append("Professional Networking")
     
-    # Create networking opportunities based on member expertise
-    connections = []
-    for member in cohort_members[:2]:  # Highlight top 2 members as connection points
-        connections.append({
-            "alumni": member["name"],
-            "expertise": member.get("focus_area", "Business Analytics"),
-            "linkedin": member["linkedin"],
-            "value": f"Connect for {member.get('focus_area', 'analytics insights')}"
-        })
     
-    # Calculate statistics
-    total_members = len(cohort_members)
-    members_with_linkedin = sum(1 for m in cohort_members if m.get("linkedin"))
-    linkedin_rate = (members_with_linkedin / total_members * 100) if total_members > 0 else 0
+    # calculate statistics
+    total_members = len(cohort_members) # count of alumni in a cohort
     
-    # Determine most common location
-    location_counts = Counter(locations)
-    primary_location = location_counts.most_common(1)[0][0] if location_counts else "Canada"
+    # determine most common location
+    normalized_locations = [normalize_city(loc) for loc in locations]
+    location_counts = Counter(normalized_locations)
+    primary_location = location_counts.most_common(1)[0][0] if location_counts else "NaN"
+    primary_count = location_counts.most_common(1)[0][1] if location_counts else 0
     
     return {
         "status": "success",
         "data": {
             "total_alumni": total_members,
-            "linkedin_presence_rate": round(linkedin_rate, 1),
             "top_skills": top_skills,
-            "focus_areas": top_focus_areas,
             "primary_location": primary_location,
             "trending_topics": trending_topics,
-            "connection_opportunities": connections,
             "member_highlights": [
                 {
                     "name": member["name"],
@@ -150,31 +155,29 @@ def get_info(year: int) -> dict:
         }
     }
 
-# Define the agent with updated instructions
+# define the agent
 root_agent = Agent(
     model="gemini-2.0-flash",
     name="mban_dashboard_agent",
     description="Provides insights about MBAN cohorts at Schulich based on Dotsnet member data",
-    instruction="""You are an agent that provides insights about MBAN (Master of Business Analytics) cohorts at Schulich School of Business based on real member data from Dotsnet.
+    instruction="""You are an agent that provides insights about MBAN (Master of Business Analytics) cohorts at Schulich School of Business based on data from Dotsnet.
     
     When a user asks for information about an MBAN cohort:
-    1. Identify the year of the cohort from the user's query (currently we have 2026 data)
+    1. Identify the year of the cohort from the user's query
     2. Use the 'get_info' tool to retrieve actual member data
     3. Provide a concise, professional summary (maximum 5 sentences)
     
     Your response should include:
     - Total number of members in the cohort
-    - LinkedIn presence rate (shows professional engagement)
-    - Top 5-7 skills across the cohort
-    - Primary focus areas of study
-    - Key networking opportunities with member names and LinkedIn profiles
+    - Top 5 skills across the cohort
+    - Primary areas of focus
     
-    Format the response to be scannable and actionable. Include actual member names and LinkedIn URLs when discussing connections.
+    Format the response to be actionable. Include actual member names and LinkedIn URLs when discussing connections.
     
     If data is not available for the requested year, politely inform the user and mention which years are available.
     
     Example response format:
-    "The MBAN 2026 cohort currently has [X] active members with [Y]% maintaining professional LinkedIn profiles. 
+    "The MBAN 2026 cohort currently has [X] active members.
     The cohort's top skills include [list key skills with counts]. 
     Members are primarily focused on [top focus areas]. 
     The cohort is actively engaged in [trending topics]. 

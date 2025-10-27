@@ -4,21 +4,22 @@ from typing import Dict, List, Optional
 from collections import Counter
 from datetime import datetime
 
-# Define your tool function with real member data
+# defining the basic identity, adding instructions, and defining tool functions
+
 def get_info(year: int) -> dict:
     """
     Retrieves information about MBAN cohort members for a specific year.
     
     Args:
-        year (int): The graduation year of the MBAN cohort (e.g., 2026)
+        year (int): The graduation year of the MBAN cohort 
         
     Returns:
         dict: Information about the cohort including member details, skills, and networking
     """
     
-    # Real member data from Dotsnet
+    # example dataset 
     members_database = {
-        2026: [  # MBAN '26 cohort
+        2026: [  
             {
                 "name": "Lucas Ben",
                 "joined": "10/12/2025",
@@ -29,7 +30,8 @@ def get_info(year: int) -> dict:
                 "skills": ["Machine Learning", "Bayesian Modeling", "NLP", "AI Development", "Statistical Inference", 
                           "Data Pipelines", "ETL Architecture", "API Integration", "Sensitivity Analysis", 
                           "Python", "SQL", "Julia", "R", "HTML/CSS", "PyMC"],
-                "focus_area": "AI Development & Statistical Modeling"
+                "offers": ["NaN"],
+                 "asks": ["NaN"]
             },
             {
                 "name": "Hasti Bagherzadi",
@@ -40,7 +42,8 @@ def get_info(year: int) -> dict:
                 "description": "MBAN 26' @ Schulich School of Business. Passionate about the intersection of data, technology, and strategy. Focus on AI agents and automation.",
                 "skills": ["SQL", "Problem Solving", "Machine Learning", "Business Analytics", 
                           "AI & Machine Learning", "AI Agents & Automation"],
-                "focus_area": "AI Agents & Automation"
+                "offers": ["NaN"],
+                "asks": ["NaN"],
             },
             {
                 "name": "Aisha Ibrahim",
@@ -52,8 +55,7 @@ def get_info(year: int) -> dict:
                 "skills": ["Data-Driven Decision-Making", "Power BI", "Python", "SQL", 
                           "Business Analysis", "Data Analysis"],
                 "offers": ["Peer Support", "Collaboration", "Networking"],
-                "asks": ["Networking and Support"],
-                "focus_area": "Business Analysis & Data Visualization"
+                "asks": ["Networking and Support"]
             },
             {
                 "name": "Nura Saloojee",
@@ -66,24 +68,23 @@ def get_info(year: int) -> dict:
                           "Data Visualization", "Machine Learning", "Statistical Analysis", "CRM", 
                           "Financial Analysis", "Market Research", "SWOT Analysis", "Salesforce", "Excel"],
                 "offers": ["Networking"],
-                "asks": ["Networking", "Keeping up with Schulich community"],
-                "focus_area": "Data Visualization & Business Intelligence"
+                "asks": ["Networking", "Keeping up with Schulich community"]
             }
         ]
     }
     
-    # Check if we have data for the requested year
+    # check if cohort data is available
     if year not in members_database:
         available_years = list(members_database.keys())
         return {
-            "status": "error",
+            "status": "error", 
             "message": f"No data available for MBAN cohort of {year}. Available years: {available_years}"
         }
     
-    # Process member data for the requested year
+    # retrieve the list of members for a unique cohort
     cohort_members = members_database[year]
     
-    # Aggregate skills across all members
+    # collect data for members of a unique cohort
     all_skills = []
     focus_areas = []
     locations = []

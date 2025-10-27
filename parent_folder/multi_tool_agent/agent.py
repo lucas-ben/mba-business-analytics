@@ -1,115 +1,183 @@
 from google.adk.agents import Agent
 import json
 from typing import Dict, List, Optional
+from collections import Counter
+from datetime import datetime
 
-# Define your tool function FIRST
+# Define your tool function with real member data
 def get_info(year: int) -> dict:
     """
     Retrieves information about MBAN cohort members for a specific year.
     
     Args:
-        year (int): The graduation year of the MBAN cohort
+        year (int): The graduation year of the MBAN cohort (e.g., 2026)
         
     Returns:
-        dict: Information about the cohort including employment stats, job titles, and industries
+        dict: Information about the cohort including member details, skills, and networking
     """
     
-    # Mock data for now - you'll replace this with actual data retrieval
-    # from schulich.dotsnet.org/c/schulich/members or your data source
-    
-    mock_data = {
-        2023: {
-            "total_alumni": 70,
-            "employment_rate": 92,
-            "job_titles": {
-                "Business Analyst": 50,
-                "Securities Analyst": 17,
-                "Investment Analyst": 10,
-                "Consultant": 8,
-                "Data Scientist": 2.5
+    # Real member data from Dotsnet
+    members_database = {
+        2026: [  # MBAN '26 cohort
+            {
+                "name": "Lucas Ben",
+                "joined": "10/12/2025",
+                "title": "Business Analytics Graduate Student",
+                "location": "Toronto, ON",
+                "linkedin": "https://linkedin.com/in/LinkedIn",
+                "description": "Business analytics graduate student with expertise in translating complex business problems into data-driven analytical solutions. Experienced in machine learning, AI system development, and statistical inference.",
+                "skills": ["Machine Learning", "Bayesian Modeling", "NLP", "AI Development", "Statistical Inference", 
+                          "Data Pipelines", "ETL Architecture", "API Integration", "Sensitivity Analysis", 
+                          "Python", "SQL", "Julia", "R", "HTML/CSS", "PyMC"],
+                "focus_area": "AI Development & Statistical Modeling"
             },
-            "industries": {
-                "Financials": 70,
-                "Pharmaceuticals": 12,
-                "Telecommunications": 5
+            {
+                "name": "Hasti Bagherzadi",
+                "joined": "10/3/2025",
+                "title": "MBAN Candidate - AI & Machine Learning Focus",
+                "location": "Canada",
+                "linkedin": "https://linkedin.com/in/hastibgh",
+                "description": "MBAN 26' @ Schulich School of Business. Passionate about the intersection of data, technology, and strategy. Focus on AI agents and automation.",
+                "skills": ["SQL", "Problem Solving", "Machine Learning", "Business Analytics", 
+                          "AI & Machine Learning", "AI Agents & Automation"],
+                "focus_area": "AI Agents & Automation"
             },
-            "trending_topics": [
-                "networking opportunities",
-                "mentorship seeking",
-                "career transitions to tech"
-            ],
-            "connection_opportunities": [
-                {
-                    "alumni": "Alexandr Wang MBAN '23",
-                    "connection": "Steve Ballmer, Director of Growth at Silicon Valley Bank",
-                    "reason": "hiring referrals in fintech"
-                }
-            ]
-        },
-        2024: {
-            "total_alumni": 85,
-            "employment_rate": 88,
-            "job_titles": {
-                "Data Analyst": 45,
-                "Business Intelligence Analyst": 20,
-                "Product Analyst": 15,
-                "Consultant": 10,
-                "Risk Analyst": 5
+            {
+                "name": "Aisha Ibrahim",
+                "joined": "10/2/2025",
+                "title": "Business & Data Analyst",
+                "location": "Kitchener, Ontario, Canada",
+                "linkedin": "https://www.linkedin.com/in/aisha-ibrahim-427258160",
+                "description": "Business Analyst and Project Coordinator with over 4 years of experience. Strong foundation in data-driven decision-making, project execution, and stakeholder management.",
+                "skills": ["Data-Driven Decision-Making", "Power BI", "Python", "SQL", 
+                          "Business Analysis", "Data Analysis"],
+                "offers": ["Peer Support", "Collaboration", "Networking"],
+                "asks": ["Networking and Support"],
+                "focus_area": "Business Analysis & Data Visualization"
             },
-            "industries": {
-                "Technology": 55,
-                "Financial Services": 25,
-                "Consulting": 10
-            },
-            "trending_topics": [
-                "AI/ML applications",
-                "product management transitions",
-                "startup opportunities"
-            ],
-            "connection_opportunities": [
-                {
-                    "alumni": "Sarah Chen MBAN '24",
-                    "connection": "Jennifer Liu, VP Analytics at Shopify",
-                    "reason": "analytics leadership opportunities"
-                }
-            ]
-        }
+            {
+                "name": "Nura Saloojee",
+                "joined": "10/1/2025",
+                "title": "Master of Business Analytics @ Schulich",
+                "location": "Greater Toronto Area, Canada",
+                "linkedin": "https://linkedin.com/in/nura-saloojee",
+                "description": "BMath @ UWaterloo. Transform complex data into clear, actionable insights. Blend analytical rigour with creative problem-solving.",
+                "skills": ["Python", "Pandas", "SQL", "Data Analysis", "Business Intelligence", 
+                          "Data Visualization", "Machine Learning", "Statistical Analysis", "CRM", 
+                          "Financial Analysis", "Market Research", "SWOT Analysis", "Salesforce", "Excel"],
+                "offers": ["Networking"],
+                "asks": ["Networking", "Keeping up with Schulich community"],
+                "focus_area": "Data Visualization & Business Intelligence"
+            }
+        ]
     }
     
     # Check if we have data for the requested year
-    if year in mock_data:
-        return {
-            "status": "success",
-            "data": mock_data[year]
-        }
-    else:
+    if year not in members_database:
+        available_years = list(members_database.keys())
         return {
             "status": "error",
-            "message": f"No data available for MBAN cohort of {year}. Available years: {list(mock_data.keys())}"
+            "message": f"No data available for MBAN cohort of {year}. Available years: {available_years}"
         }
+    
+    # Process member data for the requested year
+    cohort_members = members_database[year]
+    
+    # Aggregate skills across all members
+    all_skills = []
+    focus_areas = []
+    locations = []
+    
+    for member in cohort_members:
+        all_skills.extend(member.get("skills", []))
+        focus_areas.append(member.get("focus_area", ""))
+        locations.append(member.get("location", ""))
+    
+    # Count top skills
+    skill_counts = Counter(all_skills)
+    top_skills = dict(skill_counts.most_common(7))
+    
+    # Count focus areas
+    focus_counts = Counter(focus_areas)
+    top_focus_areas = dict(focus_counts.most_common(3))
+    
+    # Identify common themes
+    trending_topics = []
+    if "AI" in str(all_skills) or "Machine Learning" in str(all_skills):
+        trending_topics.append("AI & Machine Learning applications")
+    if "Business Intelligence" in str(all_skills) or "Data Visualization" in str(all_skills):
+        trending_topics.append("Data visualization and business intelligence")
+    if any("Networking" in member.get("asks", []) for member in cohort_members):
+        trending_topics.append("Professional networking and community building")
+    
+    # Create networking opportunities based on member expertise
+    connections = []
+    for member in cohort_members[:2]:  # Highlight top 2 members as connection points
+        connections.append({
+            "alumni": member["name"],
+            "expertise": member.get("focus_area", "Business Analytics"),
+            "linkedin": member["linkedin"],
+            "value": f"Connect for {member.get('focus_area', 'analytics insights')}"
+        })
+    
+    # Calculate statistics
+    total_members = len(cohort_members)
+    members_with_linkedin = sum(1 for m in cohort_members if m.get("linkedin"))
+    linkedin_rate = (members_with_linkedin / total_members * 100) if total_members > 0 else 0
+    
+    # Determine most common location
+    location_counts = Counter(locations)
+    primary_location = location_counts.most_common(1)[0][0] if location_counts else "Canada"
+    
+    return {
+        "status": "success",
+        "data": {
+            "total_alumni": total_members,
+            "linkedin_presence_rate": round(linkedin_rate, 1),
+            "top_skills": top_skills,
+            "focus_areas": top_focus_areas,
+            "primary_location": primary_location,
+            "trending_topics": trending_topics,
+            "connection_opportunities": connections,
+            "member_highlights": [
+                {
+                    "name": member["name"],
+                    "title": member["title"],
+                    "linkedin": member["linkedin"]
+                } for member in cohort_members[:3]  # Top 3 members
+            ]
+        }
+    }
 
-# Now define your agent with the tool
-root_agent = Agent(  # Changed to 'root_agent' - REQUIRED name
+# Define the agent with updated instructions
+root_agent = Agent(
     model="gemini-2.0-flash",
-    name="dashboard_agent",
-    description="Answers user questions about what unique MBAN cohorts are doing professionally",
-    instruction="""You are an agent that provides a summary of what unique MBAN (Master of Business Analytics) cohorts are currently doing professionally. 
+    name="mban_dashboard_agent",
+    description="Provides insights about MBAN cohorts at Schulich based on Dotsnet member data",
+    instruction="""You are an agent that provides insights about MBAN (Master of Business Analytics) cohorts at Schulich School of Business based on real member data from Dotsnet.
     
-    When a user asks for information about a MBAN cohort:
-    1. Identify the year of the cohort from the user's query
-    2. Use the 'get_info' tool to retrieve cohort data
-    3. Respond clearly with a brief and concise summary (no more than five sentences)
+    When a user asks for information about an MBAN cohort:
+    1. Identify the year of the cohort from the user's query (currently we have 2026 data)
+    2. Use the 'get_info' tool to retrieve actual member data
+    3. Provide a concise, professional summary (maximum 5 sentences)
     
-    Include in your response:
-    - Year of the cohort and total number of alumni
-    - Employment rate
-    - Top 5 job titles with percentages
-    - Top 3 industries with percentages
-    - Trending topics among the cohort
-    - Potential connection opportunities
+    Your response should include:
+    - Total number of members in the cohort
+    - LinkedIn presence rate (shows professional engagement)
+    - Top 5-7 skills across the cohort
+    - Primary focus areas of study
+    - Key networking opportunities with member names and LinkedIn profiles
     
-    Format your response professionally and make it easy to scan.
+    Format the response to be scannable and actionable. Include actual member names and LinkedIn URLs when discussing connections.
     
-    If data is not available for the requested year, inform the user politely and mention which years are available.""",
-    tools=[get_info]  # Now this references the function defined above
+    If data is not available for the requested year, politely inform the user and mention which years are available.
+    
+    Example response format:
+    "The MBAN 2026 cohort currently has [X] active members with [Y]% maintaining professional LinkedIn profiles. 
+    The cohort's top skills include [list key skills with counts]. 
+    Members are primarily focused on [top focus areas]. 
+    The cohort is actively engaged in [trending topics]. 
+    For networking, consider connecting with [member name] ([expertise area]) at [LinkedIn URL]."
+    """,
+    tools=[get_info]
 )

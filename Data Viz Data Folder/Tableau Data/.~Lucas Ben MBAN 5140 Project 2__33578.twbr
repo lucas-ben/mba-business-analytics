@@ -3,309 +3,815 @@
 <!-- build 20252.25.0818.1050                               -->
 <workbook original-version='18.1' source-build='2025.2.2 (20252.25.0818.1050)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
     <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <BasicButtonObject />
+    <CollapsiblePane />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
     <Layers />
+    <LayersPerPaneSpecPrimaryDS />
     <MapboxVectorStylesAndLayers />
     <MarkAnimation />
     <ObjectModelEncapsulateLegacy />
     <ObjectModelTableType />
     <SchemaViewerObjectModel />
+    <SetMembershipControl />
     <SheetIdentifierTracking />
     <SpatialFileLayer />
     <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+    <ZoneBackgroundTransparency />
   </document-format-change-manifest>
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
   </preferences>
   <datasources>
-    <datasource caption='nia_neighbourhoods_clean.geojson+ (Multiple Connections)' inline='true' name='federated.1jd51e61fo6bvg1dfn3zu18fz4vd' version='18.1'>
+    <datasource caption='master_df' inline='true' name='federated.1jturz40r844kz176d9lc0ljkg1t' version='18.1'>
       <connection class='federated'>
         <named-connections>
-          <named-connection caption='spatial' name='ogrdirect.1edq0o901pp7eg18yhvgl1x8z1a0'>
-            <connection class='ogrdirect' directory='/Users/lucasben/Documents/mba-business-analytics/Data Viz Data Folder/Tableau Data' filename='nia_neighbourhoods_clean.geojson' password='' server='' tablename='' />
+          <named-connection caption='master dataframe' name='ogrdirect.1le9tz717w0v9h1eicd5i1pqpzxj'>
+            <connection class='ogrdirect' directory='/Users/lucasben/Desktop/Toronto Spatial Data' filename='master_df.geojson' password='' server='' tablename='' />
           </named-connection>
-          <named-connection caption='metrics' name='textscan.0zh4iom1sbll9z1f7v5d604gs3hd'>
-            <connection class='textscan' directory='/Users/lucasben/Documents/mba-business-analytics/Data Viz Data Folder/Tableau Data' filename='toronto_childcare_metrics.csv' password='' server='' />
+          <named-connection caption='childcare data' name='ogrdirect.15gumqx15ahwu314zq5sr0q70zj7'>
+            <connection class='ogrdirect' directory='/Users/lucasben/Desktop' filename='childcare_locations_clean.geojson' password='' server='' />
           </named-connection>
         </named-connections>
-        <relation join='left' type='join'>
-          <clause type='join'>
-            <expression op='Intersects'>
-              <expression op='[toronto_neighbourhoods_clean.geojson].[Geometry]' />
-              <expression op='[childcare_locations_clean.geojson].[Geometry]' />
-            </expression>
-          </clause>
-          <relation connection='ogrdirect.1edq0o901pp7eg18yhvgl1x8z1a0' name='toronto_neighbourhoods_clean.geojson' table='[toronto_neighbourhoods_clean.geojson]' type='table'>
-            <columns>
-              <column datatype='integer' name='_id' ordinal='0' />
-              <column datatype='integer' name='AREA_ID' ordinal='1' />
-              <column datatype='integer' name='AREA_ATTR_ID' ordinal='2' />
-              <column datatype='string' name='PARENT_AREA_ID' ordinal='3' />
-              <column datatype='string' name='AREA_SHORT_CODE' ordinal='4' />
-              <column datatype='string' name='AREA_LONG_CODE' ordinal='5' />
-              <column datatype='string' name='AREA_NAME' ordinal='6' />
-              <column datatype='string' name='AREA_DESC' ordinal='7' />
-              <column datatype='string' name='CLASSIFICATION' ordinal='8' />
-              <column datatype='string' name='CLASSIFICATION_CODE' ordinal='9' />
-              <column datatype='real' name='OBJECTID' ordinal='10' />
-              <column datatype='spatial' name='Geometry' ordinal='11' />
-            </columns>
-          </relation>
-          <relation connection='ogrdirect.1edq0o901pp7eg18yhvgl1x8z1a0' name='childcare_locations_clean.geojson' table='[childcare_locations_clean.geojson]' type='table'>
-            <columns>
-              <column datatype='integer' name='_id' ordinal='0' />
-              <column datatype='string' name='service_system_manager' ordinal='1' />
-              <column datatype='string' name='agency' ordinal='2' />
-              <column datatype='integer' name='loc_id' ordinal='3' />
-              <column datatype='string' name='program_name' ordinal='4' />
-              <column datatype='string' name='languages' ordinal='5' />
-              <column datatype='string' name='french_language_program' ordinal='6' />
-              <column datatype='string' name='indigenous_program' ordinal='7' />
-              <column datatype='string' name='programTypes' ordinal='8' />
-              <column datatype='string' name='serviceName' ordinal='9' />
-              <column datatype='string' name='buildingName' ordinal='10' />
-              <column datatype='string' name='address' ordinal='11' />
-              <column datatype='string' name='full_address' ordinal='12' />
-              <column datatype='string' name='major_intersection' ordinal='13' />
-              <column datatype='integer' name='ward' ordinal='14' />
-              <column datatype='string' name='ward_name' ordinal='15' />
-              <column datatype='string' name='located_in_school' ordinal='16' />
-              <column datatype='string' name='school_name' ordinal='17' />
-              <column datatype='real' name='lat' ordinal='18' />
-              <column datatype='real' name='lng' ordinal='19' />
-              <column datatype='string' name='website' ordinal='20' />
-              <column datatype='string' name='website_name' ordinal='21' />
-              <column datatype='string' name='website_description' ordinal='22' />
-              <column datatype='string' name='consultant_fullname' ordinal='23' />
-              <column datatype='string' name='consultant_phone' ordinal='24' />
-              <column datatype='string' name='email' ordinal='25' />
-              <column datatype='string' name='contact_fullname' ordinal='26' />
-              <column datatype='string' name='contact_title' ordinal='27' />
-              <column datatype='string' name='phone' ordinal='28' />
-              <column datatype='string' name='contact_email' ordinal='29' />
-              <column datatype='string' name='dropinHours' ordinal='30' />
-              <column datatype='string' name='registeredHours' ordinal='31' />
-              <column datatype='string' name='virtualHours' ordinal='32' />
-              <column datatype='string' name='centre_type' ordinal='33' />
-              <column datatype='string' name='hourCategory' ordinal='34' />
-              <column datatype='spatial' name='Geometry' ordinal='35' />
-            </columns>
-          </relation>
+        <relation connection='ogrdirect.1le9tz717w0v9h1eicd5i1pqpzxj' name='master_df.geojson' table='[master_df.geojson]' type='table'>
+          <columns>
+            <column datatype='integer' name='_id' ordinal='0' />
+            <column datatype='integer' name='AREA_ID' ordinal='1' />
+            <column datatype='integer' name='AREA_ATTR_ID' ordinal='2' />
+            <column datatype='string' name='PARENT_AREA_ID' ordinal='3' />
+            <column datatype='string' name='AREA_SHORT_CODE' ordinal='4' />
+            <column datatype='string' name='AREA_LONG_CODE' ordinal='5' />
+            <column datatype='string' name='Neighbourhood_Name' ordinal='6' />
+            <column datatype='string' name='AREA_DESC' ordinal='7' />
+            <column datatype='string' name='CLASSIFICATION' ordinal='8' />
+            <column datatype='string' name='CLASSIFICATION_CODE' ordinal='9' />
+            <column datatype='real' name='OBJECTID' ordinal='10' />
+            <column datatype='real' name='children_0_4' ordinal='11' />
+            <column datatype='real' name='median_age_population' ordinal='12' />
+            <column datatype='real' name='median_after_tax_income_2020_over_15' ordinal='13' />
+            <column datatype='real' name='after_tax_bottom_half_distribution' ordinal='14' />
+            <column datatype='real' name='    In bottom decile' ordinal='15' />
+            <column datatype='real' name='    In second decile' ordinal='16' />
+            <column datatype='real' name='    In third decile' ordinal='17' />
+            <column datatype='real' name='    In fourth decile' ordinal='18' />
+            <column datatype='real' name='    In fifth decile' ordinal='19' />
+            <column datatype='real' name='    In sixth decile' ordinal='20' />
+            <column datatype='real' name='    In seventh decile' ordinal='21' />
+            <column datatype='real' name='    In eighth decile' ordinal='22' />
+            <column datatype='real' name='    In ninth decile' ordinal='23' />
+            <column datatype='real' name='    In top decile' ordinal='24' />
+            <column datatype='real' name='inequality_index' ordinal='25' />
+            <column datatype='real' name='count_of_children' ordinal='26' />
+            <column datatype='real' name='single_moms' ordinal='27' />
+            <column datatype='string' name='is_nia' ordinal='28' />
+            <column datatype='real' name='childcare_centres_count' ordinal='29' />
+            <column datatype='real' name='centres_per_1000_children' ordinal='30' />
+            <column datatype='spatial' name='Geometry' ordinal='31' />
+          </columns>
         </relation>
-        <cols>
-          <map key='[AREA_ATTR_ID]' value='[toronto_neighbourhoods_clean.geojson].[AREA_ATTR_ID]' />
-          <map key='[AREA_DESC]' value='[toronto_neighbourhoods_clean.geojson].[AREA_DESC]' />
-          <map key='[AREA_ID]' value='[toronto_neighbourhoods_clean.geojson].[AREA_ID]' />
-          <map key='[AREA_LONG_CODE]' value='[toronto_neighbourhoods_clean.geojson].[AREA_LONG_CODE]' />
-          <map key='[AREA_NAME]' value='[toronto_neighbourhoods_clean.geojson].[AREA_NAME]' />
-          <map key='[AREA_SHORT_CODE]' value='[toronto_neighbourhoods_clean.geojson].[AREA_SHORT_CODE]' />
-          <map key='[CLASSIFICATION]' value='[toronto_neighbourhoods_clean.geojson].[CLASSIFICATION]' />
-          <map key='[CLASSIFICATION_CODE]' value='[toronto_neighbourhoods_clean.geojson].[CLASSIFICATION_CODE]' />
-          <map key='[Geometry (childcare_locations_clean.geojson)]' value='[childcare_locations_clean.geojson].[Geometry]' />
-          <map key='[Geometry]' value='[toronto_neighbourhoods_clean.geojson].[Geometry]' />
-          <map key='[OBJECTID]' value='[toronto_neighbourhoods_clean.geojson].[OBJECTID]' />
-          <map key='[PARENT_AREA_ID]' value='[toronto_neighbourhoods_clean.geojson].[PARENT_AREA_ID]' />
-          <map key='[_id (childcare_locations_clean.geojson)]' value='[childcare_locations_clean.geojson].[_id]' />
-          <map key='[_id]' value='[toronto_neighbourhoods_clean.geojson].[_id]' />
-          <map key='[address]' value='[childcare_locations_clean.geojson].[address]' />
-          <map key='[agency]' value='[childcare_locations_clean.geojson].[agency]' />
-          <map key='[buildingName]' value='[childcare_locations_clean.geojson].[buildingName]' />
-          <map key='[centre_type]' value='[childcare_locations_clean.geojson].[centre_type]' />
-          <map key='[consultant_fullname]' value='[childcare_locations_clean.geojson].[consultant_fullname]' />
-          <map key='[consultant_phone]' value='[childcare_locations_clean.geojson].[consultant_phone]' />
-          <map key='[contact_email]' value='[childcare_locations_clean.geojson].[contact_email]' />
-          <map key='[contact_fullname]' value='[childcare_locations_clean.geojson].[contact_fullname]' />
-          <map key='[contact_title]' value='[childcare_locations_clean.geojson].[contact_title]' />
-          <map key='[dropinHours]' value='[childcare_locations_clean.geojson].[dropinHours]' />
-          <map key='[email]' value='[childcare_locations_clean.geojson].[email]' />
-          <map key='[french_language_program]' value='[childcare_locations_clean.geojson].[french_language_program]' />
-          <map key='[full_address]' value='[childcare_locations_clean.geojson].[full_address]' />
-          <map key='[hourCategory]' value='[childcare_locations_clean.geojson].[hourCategory]' />
-          <map key='[indigenous_program]' value='[childcare_locations_clean.geojson].[indigenous_program]' />
-          <map key='[languages]' value='[childcare_locations_clean.geojson].[languages]' />
-          <map key='[lat]' value='[childcare_locations_clean.geojson].[lat]' />
-          <map key='[lng]' value='[childcare_locations_clean.geojson].[lng]' />
-          <map key='[loc_id]' value='[childcare_locations_clean.geojson].[loc_id]' />
-          <map key='[located_in_school]' value='[childcare_locations_clean.geojson].[located_in_school]' />
-          <map key='[major_intersection]' value='[childcare_locations_clean.geojson].[major_intersection]' />
-          <map key='[phone]' value='[childcare_locations_clean.geojson].[phone]' />
-          <map key='[programTypes]' value='[childcare_locations_clean.geojson].[programTypes]' />
-          <map key='[program_name]' value='[childcare_locations_clean.geojson].[program_name]' />
-          <map key='[registeredHours]' value='[childcare_locations_clean.geojson].[registeredHours]' />
-          <map key='[school_name]' value='[childcare_locations_clean.geojson].[school_name]' />
-          <map key='[serviceName]' value='[childcare_locations_clean.geojson].[serviceName]' />
-          <map key='[service_system_manager]' value='[childcare_locations_clean.geojson].[service_system_manager]' />
-          <map key='[virtualHours]' value='[childcare_locations_clean.geojson].[virtualHours]' />
-          <map key='[ward]' value='[childcare_locations_clean.geojson].[ward]' />
-          <map key='[ward_name]' value='[childcare_locations_clean.geojson].[ward_name]' />
-          <map key='[website]' value='[childcare_locations_clean.geojson].[website]' />
-          <map key='[website_description]' value='[childcare_locations_clean.geojson].[website_description]' />
-          <map key='[website_name]' value='[childcare_locations_clean.geojson].[website_name]' />
-        </cols>
         <metadata-records>
           <metadata-record class='column'>
             <remote-name>_id</remote-name>
             <remote-type>20</remote-type>
             <local-name>[_id]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>_id</remote-alias>
             <ordinal>0</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>AREA_ID</remote-name>
             <remote-type>20</remote-type>
             <local-name>[AREA_ID]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>AREA_ID</remote-alias>
             <ordinal>1</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>AREA_ATTR_ID</remote-name>
             <remote-type>20</remote-type>
             <local-name>[AREA_ATTR_ID]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>AREA_ATTR_ID</remote-alias>
             <ordinal>2</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>PARENT_AREA_ID</remote-name>
             <remote-type>129</remote-type>
             <local-name>[PARENT_AREA_ID]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>PARENT_AREA_ID</remote-alias>
             <ordinal>3</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>AREA_SHORT_CODE</remote-name>
             <remote-type>129</remote-type>
             <local-name>[AREA_SHORT_CODE]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>AREA_SHORT_CODE</remote-alias>
             <ordinal>4</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>AREA_LONG_CODE</remote-name>
             <remote-type>129</remote-type>
             <local-name>[AREA_LONG_CODE]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>AREA_LONG_CODE</remote-alias>
             <ordinal>5</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>AREA_NAME</remote-name>
+            <remote-name>Neighbourhood_Name</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[AREA_NAME]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
-            <remote-alias>AREA_NAME</remote-alias>
+            <local-name>[Neighbourhood_Name]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>Neighbourhood_Name</remote-alias>
             <ordinal>6</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>AREA_DESC</remote-name>
             <remote-type>129</remote-type>
             <local-name>[AREA_DESC]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>AREA_DESC</remote-alias>
             <ordinal>7</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>CLASSIFICATION</remote-name>
             <remote-type>129</remote-type>
             <local-name>[CLASSIFICATION]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>CLASSIFICATION</remote-alias>
             <ordinal>8</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>CLASSIFICATION_CODE</remote-name>
             <remote-type>129</remote-type>
             <local-name>[CLASSIFICATION_CODE]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>CLASSIFICATION_CODE</remote-alias>
             <ordinal>9</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>OBJECTID</remote-name>
             <remote-type>5</remote-type>
             <local-name>[OBJECTID]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>OBJECTID</remote-alias>
             <ordinal>10</ordinal>
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>children_0_4</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[children_0_4]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>children_0_4</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>median_age_population</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[median_age_population]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>median_age_population</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>median_after_tax_income_2020_over_15</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[median_after_tax_income_2020_over_15]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>median_after_tax_income_2020_over_15</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>after_tax_bottom_half_distribution</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[after_tax_bottom_half_distribution]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>after_tax_bottom_half_distribution</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>    In bottom decile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[    In bottom decile]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>    In bottom decile</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>    In second decile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[    In second decile]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>    In second decile</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>    In third decile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[    In third decile]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>    In third decile</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>    In fourth decile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[    In fourth decile]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>    In fourth decile</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>    In fifth decile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[    In fifth decile]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>    In fifth decile</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>    In sixth decile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[    In sixth decile]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>    In sixth decile</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>    In seventh decile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[    In seventh decile]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>    In seventh decile</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>    In eighth decile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[    In eighth decile]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>    In eighth decile</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>    In ninth decile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[    In ninth decile]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>    In ninth decile</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>    In top decile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[    In top decile]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>    In top decile</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>inequality_index</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[inequality_index]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>inequality_index</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>count_of_children</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[count_of_children]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>count_of_children</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>single_moms</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[single_moms]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>single_moms</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_nia</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[is_nia]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>is_nia</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>childcare_centres_count</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[childcare_centres_count]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>childcare_centres_count</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>centres_per_1000_children</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[centres_per_1000_children]</local-name>
+            <parent-name>[master_df.geojson]</parent-name>
+            <remote-alias>centres_per_1000_children</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>Geometry</remote-name>
             <remote-type>8</remote-type>
             <local-name>[Geometry]</local-name>
-            <parent-name>[toronto_neighbourhoods_clean.geojson]</parent-name>
+            <parent-name>[master_df.geojson]</parent-name>
             <remote-alias>Geometry</remote-alias>
-            <ordinal>11</ordinal>
+            <ordinal>31</ordinal>
             <local-type>spatial</local-type>
             <aggregation>Collect</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[master_df.geojson_901E52DF356C419E9759E1760F36674A]</object-id>
           </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='In bottom decile' datatype='real' name='[    In bottom decile]' role='measure' type='quantitative' />
+      <column caption='In eighth decile' datatype='real' name='[    In eighth decile]' role='measure' type='quantitative' />
+      <column caption='In fifth decile' datatype='real' name='[    In fifth decile]' role='measure' type='quantitative' />
+      <column caption='In fourth decile' datatype='real' name='[    In fourth decile]' role='measure' type='quantitative' />
+      <column caption='In ninth decile' datatype='real' name='[    In ninth decile]' role='measure' type='quantitative' />
+      <column caption='In second decile' datatype='real' name='[    In second decile]' role='measure' type='quantitative' />
+      <column caption='In seventh decile' datatype='real' name='[    In seventh decile]' role='measure' type='quantitative' />
+      <column caption='In sixth decile' datatype='real' name='[    In sixth decile]' role='measure' type='quantitative' />
+      <column caption='In third decile' datatype='real' name='[    In third decile]' role='measure' type='quantitative' />
+      <column caption='In top decile' datatype='real' name='[    In top decile]' role='measure' type='quantitative' />
+      <column caption='Area Attr Id' datatype='integer' name='[AREA_ATTR_ID]' role='dimension' type='ordinal' />
+      <column caption='Area Desc' datatype='string' name='[AREA_DESC]' role='dimension' type='nominal' />
+      <column caption='Area Id' datatype='integer' name='[AREA_ID]' role='dimension' type='ordinal' />
+      <column caption='Area Long Code' datatype='string' name='[AREA_LONG_CODE]' role='dimension' type='nominal' />
+      <column caption='Area Short Code' datatype='string' name='[AREA_SHORT_CODE]' role='dimension' type='nominal' />
+      <column caption='Classification' datatype='string' name='[CLASSIFICATION]' role='dimension' type='nominal' />
+      <column caption='Classification Code' datatype='string' name='[CLASSIFICATION_CODE]' role='dimension' type='nominal' />
+      <column caption='NIA clean' datatype='string' name='[Calculation_2362841694638379010]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IFNULL([is_nia],&apos;False&apos;)' />
+      </column>
+      <column caption='total individuals (income)' datatype='real' name='[Calculation_2362841694690742275]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[after_tax_bottom_half_distribution] + [    In sixth decile] + [    In seventh decile] + [    In eighth decile] + [    In ninth decile] + [    In top decile]' />
+      </column>
+      <column caption='Top Half Distribution' datatype='real' name='[Calculation_2362841694691237892]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_2362841694690742275] - [after_tax_bottom_half_distribution]' />
+      </column>
+      <column caption='Neighbourhood Name' datatype='string' name='[Neighbourhood_Name]' role='dimension' type='nominal' />
+      <column caption='Objectid' datatype='real' name='[OBJECTID]' role='measure' type='quantitative' />
+      <column caption='Parent Area Id' datatype='string' name='[PARENT_AREA_ID]' role='dimension' type='nominal' />
+      <column caption='master_df.geojson' datatype='table' name='[__tableau_internal_object_id__].[master_df.geojson_901E52DF356C419E9759E1760F36674A]' role='measure' type='quantitative' />
+      <column caption='_Id' datatype='integer' name='[_id]' role='dimension' type='ordinal' />
+      <column caption='After Tax Bottom Half Distribution' datatype='real' name='[after_tax_bottom_half_distribution]' role='measure' type='quantitative' />
+      <column caption='Centres Per 1000 Children' datatype='real' name='[centres_per_1000_children]' role='measure' type='quantitative' />
+      <column caption='Childcare Centres Count' datatype='real' name='[childcare_centres_count]' role='measure' type='quantitative' />
+      <column caption='Children 0 4' datatype='real' name='[children_0_4]' role='measure' type='quantitative' />
+      <column caption='Count Of Children' datatype='real' name='[count_of_children]' role='measure' type='quantitative' />
+      <column caption='Inequality Index' datatype='real' name='[inequality_index]' role='measure' type='quantitative' />
+      <column caption='Is Nia' datatype='string' name='[is_nia]' role='dimension' type='nominal' />
+      <column caption='Median After Tax Income 2020 Over 15' datatype='real' name='[median_after_tax_income_2020_over_15]' role='measure' type='quantitative' />
+      <column caption='Median Age Population' datatype='real' name='[median_age_population]' role='measure' type='quantitative' />
+      <column caption='Single Moms' datatype='real' name='[single_moms]' role='measure' type='quantitative' />
+      <column-instance column='[__tableau_internal_object_id__].[master_df.geojson_901E52DF356C419E9759E1760F36674A]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:master_df.geojson_901E52DF356C419E9759E1760F36674A:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2362841694638379010]' derivation='None' name='[none:Calculation_2362841694638379010:nk]' pivot='key' type='nominal' />
+      <column-instance column='[is_nia]' derivation='None' name='[none:is_nia:nk]' pivot='key' type='nominal' />
+      <column-instance column='[    In bottom decile]' derivation='Sum' name='[sum:    In bottom decile:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[    In eighth decile]' derivation='Sum' name='[sum:    In eighth decile:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[    In fifth decile]' derivation='Sum' name='[sum:    In fifth decile:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[    In fourth decile]' derivation='Sum' name='[sum:    In fourth decile:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[    In ninth decile]' derivation='Sum' name='[sum:    In ninth decile:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[    In second decile]' derivation='Sum' name='[sum:    In second decile:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[    In seventh decile]' derivation='Sum' name='[sum:    In seventh decile:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[    In sixth decile]' derivation='Sum' name='[sum:    In sixth decile:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[    In third decile]' derivation='Sum' name='[sum:    In third decile:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[    In top decile]' derivation='Sum' name='[sum:    In top decile:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2362841694690742275]' derivation='Sum' name='[sum:Calculation_2362841694690742275:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2362841694691237892]' derivation='Sum' name='[sum:Calculation_2362841694691237892:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[OBJECTID]' derivation='Sum' name='[sum:OBJECTID:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[after_tax_bottom_half_distribution]' derivation='Sum' name='[sum:after_tax_bottom_half_distribution:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[centres_per_1000_children]' derivation='Sum' name='[sum:centres_per_1000_children:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[childcare_centres_count]' derivation='Sum' name='[sum:childcare_centres_count:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[children_0_4]' derivation='Sum' name='[sum:children_0_4:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[count_of_children]' derivation='Sum' name='[sum:count_of_children:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[inequality_index]' derivation='Sum' name='[sum:inequality_index:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[median_after_tax_income_2020_over_15]' derivation='Sum' name='[sum:median_after_tax_income_2020_over_15:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[median_age_population]' derivation='Sum' name='[sum:median_age_population:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[single_moms]' derivation='Sum' name='[sum:single_moms:qk]' pivot='key' type='quantitative' />
+      <group caption='Action (Neighbourhood Name)' hidden='true' name='[Action (Neighbourhood Name)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Neighbourhood_Name]' />
+        </groupfilter>
+      </group>
+      <group caption='Bottom 10 Income' name='[Bottom 10 Income]' name-style='unqualified' user:ui-builder='filter-group'>
+        <groupfilter count='10' end='bottom' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+          <groupfilter direction='DESC' expression='SUM([median_after_tax_income_2020_over_15])' function='order' user:ui-marker='order'>
+            <groupfilter function='level-members' level='[Neighbourhood_Name]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </groupfilter>
+        </groupfilter>
+      </group>
+      <group caption='Bottom 5' name='[Bottom 5]' name-style='unqualified' user:ui-builder='filter-group'>
+        <groupfilter count='5' end='bottom' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+          <groupfilter direction='DESC' expression='SUM([median_after_tax_income_2020_over_15])' function='order' user:ui-marker='order'>
+            <groupfilter function='level-members' level='[Neighbourhood_Name]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </groupfilter>
+        </groupfilter>
+      </group>
+      <group caption='Top &amp; Bottom 10 Income' delimiter=',' name='[Set 1]' name-style='unqualified'>
+        <groupfilter function='union'>
+          <groupfilter field='[Top 10 Income]' function='reference' />
+          <groupfilter field='[Bottom 10 Income]' function='reference' />
+        </groupfilter>
+      </group>
+      <group caption='combined top 5' delimiter=',' name='[Set 2]' name-style='unqualified'>
+        <groupfilter function='union'>
+          <groupfilter field='[Top 5]' function='reference' />
+          <groupfilter field='[Bottom 5]' function='reference' />
+        </groupfilter>
+      </group>
+      <group caption='inequality 5 set' delimiter=',' name='[Set 3]' name-style='unqualified'>
+        <groupfilter function='except'>
+          <groupfilter field='[inequality bottom 10]' function='reference' />
+          <groupfilter field='[inequality top 10]' function='reference' />
+        </groupfilter>
+      </group>
+      <group caption='Top 10 Income' name='[Top 10 Income]' name-style='unqualified' user:ui-builder='filter-group'>
+        <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+          <groupfilter direction='DESC' expression='SUM([median_after_tax_income_2020_over_15])' function='order' user:ui-marker='order'>
+            <groupfilter function='level-members' level='[Neighbourhood_Name]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </groupfilter>
+        </groupfilter>
+      </group>
+      <group caption='Top 5' name='[Top 5]' name-style='unqualified' user:ui-builder='filter-group'>
+        <groupfilter count='5' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+          <groupfilter direction='DESC' expression='SUM([median_after_tax_income_2020_over_15])' function='order' user:ui-marker='order'>
+            <groupfilter function='level-members' level='[Neighbourhood_Name]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </groupfilter>
+        </groupfilter>
+      </group>
+      <group caption='inequality bottom 10' name='[inequality bottom 10]' name-style='unqualified' user:ui-builder='filter-group'>
+        <groupfilter count='5' end='bottom' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+          <groupfilter direction='DESC' expression='SUM([inequality_index])' function='order' user:ui-marker='order'>
+            <groupfilter function='level-members' level='[Neighbourhood_Name]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </groupfilter>
+        </groupfilter>
+      </group>
+      <group caption='inequality top 5' name='[inequality top 10]' name-style='unqualified' user:ui-builder='filter-group'>
+        <groupfilter count='5' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+          <groupfilter direction='DESC' expression='SUM([inequality_index])' function='order' user:ui-marker='order'>
+            <groupfilter function='level-members' level='[Neighbourhood_Name]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </groupfilter>
+        </groupfilter>
+      </group>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:is_nia:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;True&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;False&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Calculation_2362841694638379010:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;False&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;True&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:    In fifth decile:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:after_tax_bottom_half_distribution:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:single_moms:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:count_of_children:qk]&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:    In seventh decile:qk]&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:    In fourth decile:qk]&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[__tableau_internal_object_id__].[cnt:master_df.geojson_901E52DF356C419E9759E1760F36674A:qk]&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_age_population:qk]&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:Calculation_2362841694691237892:qk]&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:centres_per_1000_children:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:inequality_index:qk]&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:    In bottom decile:qk]&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:    In sixth decile:qk]&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:    In third decile:qk]&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_after_tax_income_2020_over_15:qk]&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:OBJECTID:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:    In ninth decile:qk]&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:    In eighth decile:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:Calculation_2362841694690742275:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:childcare_centres_count:qk]&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:    In top decile:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:    In second decile:qk]&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:children_0_4:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='shape' field='[none:Calculation_2362841694638379010:nk]' type='shape'>
+            <map to=':filled/circle'>
+              <bucket>&quot;False&quot;</bucket>
+            </map>
+            <map to=':filled/diamond'>
+              <bucket>&quot;True&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Canada&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='master_df.geojson' id='master_df.geojson_901E52DF356C419E9759E1760F36674A'>
+            <properties context=''>
+              <relation connection='ogrdirect.1le9tz717w0v9h1eicd5i1pqpzxj' name='master_df.geojson' table='[master_df.geojson]' type='table'>
+                <columns>
+                  <column datatype='integer' name='_id' ordinal='0' />
+                  <column datatype='integer' name='AREA_ID' ordinal='1' />
+                  <column datatype='integer' name='AREA_ATTR_ID' ordinal='2' />
+                  <column datatype='string' name='PARENT_AREA_ID' ordinal='3' />
+                  <column datatype='string' name='AREA_SHORT_CODE' ordinal='4' />
+                  <column datatype='string' name='AREA_LONG_CODE' ordinal='5' />
+                  <column datatype='string' name='Neighbourhood_Name' ordinal='6' />
+                  <column datatype='string' name='AREA_DESC' ordinal='7' />
+                  <column datatype='string' name='CLASSIFICATION' ordinal='8' />
+                  <column datatype='string' name='CLASSIFICATION_CODE' ordinal='9' />
+                  <column datatype='real' name='OBJECTID' ordinal='10' />
+                  <column datatype='real' name='children_0_4' ordinal='11' />
+                  <column datatype='real' name='median_age_population' ordinal='12' />
+                  <column datatype='real' name='median_after_tax_income_2020_over_15' ordinal='13' />
+                  <column datatype='real' name='after_tax_bottom_half_distribution' ordinal='14' />
+                  <column datatype='real' name='    In bottom decile' ordinal='15' />
+                  <column datatype='real' name='    In second decile' ordinal='16' />
+                  <column datatype='real' name='    In third decile' ordinal='17' />
+                  <column datatype='real' name='    In fourth decile' ordinal='18' />
+                  <column datatype='real' name='    In fifth decile' ordinal='19' />
+                  <column datatype='real' name='    In sixth decile' ordinal='20' />
+                  <column datatype='real' name='    In seventh decile' ordinal='21' />
+                  <column datatype='real' name='    In eighth decile' ordinal='22' />
+                  <column datatype='real' name='    In ninth decile' ordinal='23' />
+                  <column datatype='real' name='    In top decile' ordinal='24' />
+                  <column datatype='real' name='inequality_index' ordinal='25' />
+                  <column datatype='real' name='count_of_children' ordinal='26' />
+                  <column datatype='real' name='single_moms' ordinal='27' />
+                  <column datatype='string' name='is_nia' ordinal='28' />
+                  <column datatype='real' name='childcare_centres_count' ordinal='29' />
+                  <column datatype='real' name='centres_per_1000_children' ordinal='30' />
+                  <column datatype='spatial' name='Geometry' ordinal='31' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='childcare_locations_clean' inline='true' name='federated.0fqabnt0xowcxu13gzkdh0cbrbu7' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='childcare_locations_clean' name='ogrdirect.0304fl20hy6zyb175zsa60p0sl5q'>
+            <connection class='ogrdirect' directory='/Users/lucasben/Desktop' filename='childcare_locations_clean.geojson' password='' server='' tablename='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='ogrdirect.0304fl20hy6zyb175zsa60p0sl5q' name='childcare_locations_clean.geojson' table='[childcare_locations_clean.geojson]' type='table'>
+          <columns>
+            <column datatype='integer' name='_id' ordinal='0' />
+            <column datatype='string' name='service_system_manager' ordinal='1' />
+            <column datatype='string' name='agency' ordinal='2' />
+            <column datatype='integer' name='loc_id' ordinal='3' />
+            <column datatype='string' name='program_name' ordinal='4' />
+            <column datatype='string' name='languages' ordinal='5' />
+            <column datatype='string' name='french_language_program' ordinal='6' />
+            <column datatype='string' name='indigenous_program' ordinal='7' />
+            <column datatype='string' name='programTypes' ordinal='8' />
+            <column datatype='string' name='serviceName' ordinal='9' />
+            <column datatype='string' name='buildingName' ordinal='10' />
+            <column datatype='string' name='address' ordinal='11' />
+            <column datatype='string' name='full_address' ordinal='12' />
+            <column datatype='string' name='major_intersection' ordinal='13' />
+            <column datatype='integer' name='ward' ordinal='14' />
+            <column datatype='string' name='ward_name' ordinal='15' />
+            <column datatype='string' name='located_in_school' ordinal='16' />
+            <column datatype='string' name='school_name' ordinal='17' />
+            <column datatype='real' name='lat' ordinal='18' />
+            <column datatype='real' name='lng' ordinal='19' />
+            <column datatype='string' name='website' ordinal='20' />
+            <column datatype='string' name='website_name' ordinal='21' />
+            <column datatype='string' name='website_description' ordinal='22' />
+            <column datatype='string' name='consultant_fullname' ordinal='23' />
+            <column datatype='string' name='consultant_phone' ordinal='24' />
+            <column datatype='string' name='email' ordinal='25' />
+            <column datatype='string' name='contact_fullname' ordinal='26' />
+            <column datatype='string' name='contact_title' ordinal='27' />
+            <column datatype='string' name='phone' ordinal='28' />
+            <column datatype='string' name='contact_email' ordinal='29' />
+            <column datatype='string' name='dropinHours' ordinal='30' />
+            <column datatype='string' name='registeredHours' ordinal='31' />
+            <column datatype='string' name='virtualHours' ordinal='32' />
+            <column datatype='string' name='centre_type' ordinal='33' />
+            <column datatype='string' name='hourCategory' ordinal='34' />
+            <column datatype='spatial' name='Geometry' ordinal='35' />
+          </columns>
+        </relation>
+        <metadata-records>
           <metadata-record class='column'>
             <remote-name>_id</remote-name>
             <remote-type>20</remote-type>
-            <local-name>[_id (childcare_locations_clean.geojson)]</local-name>
+            <local-name>[_id]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>_id</remote-alias>
-            <ordinal>12</ordinal>
+            <ordinal>0</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>service_system_manager</remote-name>
@@ -313,12 +819,12 @@
             <local-name>[service_system_manager]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>service_system_manager</remote-alias>
-            <ordinal>13</ordinal>
+            <ordinal>1</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>agency</remote-name>
@@ -326,12 +832,12 @@
             <local-name>[agency]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>agency</remote-alias>
-            <ordinal>14</ordinal>
+            <ordinal>2</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>loc_id</remote-name>
@@ -339,11 +845,11 @@
             <local-name>[loc_id]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>loc_id</remote-alias>
-            <ordinal>15</ordinal>
+            <ordinal>3</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>program_name</remote-name>
@@ -351,12 +857,12 @@
             <local-name>[program_name]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>program_name</remote-alias>
-            <ordinal>16</ordinal>
+            <ordinal>4</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>languages</remote-name>
@@ -364,12 +870,12 @@
             <local-name>[languages]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>languages</remote-alias>
-            <ordinal>17</ordinal>
+            <ordinal>5</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>french_language_program</remote-name>
@@ -377,12 +883,12 @@
             <local-name>[french_language_program]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>french_language_program</remote-alias>
-            <ordinal>18</ordinal>
+            <ordinal>6</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>indigenous_program</remote-name>
@@ -390,12 +896,12 @@
             <local-name>[indigenous_program]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>indigenous_program</remote-alias>
-            <ordinal>19</ordinal>
+            <ordinal>7</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>programTypes</remote-name>
@@ -403,12 +909,12 @@
             <local-name>[programTypes]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>programTypes</remote-alias>
-            <ordinal>20</ordinal>
+            <ordinal>8</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>serviceName</remote-name>
@@ -416,12 +922,12 @@
             <local-name>[serviceName]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>serviceName</remote-alias>
-            <ordinal>21</ordinal>
+            <ordinal>9</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>buildingName</remote-name>
@@ -429,12 +935,12 @@
             <local-name>[buildingName]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>buildingName</remote-alias>
-            <ordinal>22</ordinal>
+            <ordinal>10</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>address</remote-name>
@@ -442,12 +948,12 @@
             <local-name>[address]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>address</remote-alias>
-            <ordinal>23</ordinal>
+            <ordinal>11</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>full_address</remote-name>
@@ -455,12 +961,12 @@
             <local-name>[full_address]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>full_address</remote-alias>
-            <ordinal>24</ordinal>
+            <ordinal>12</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>major_intersection</remote-name>
@@ -468,12 +974,12 @@
             <local-name>[major_intersection]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>major_intersection</remote-alias>
-            <ordinal>25</ordinal>
+            <ordinal>13</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>ward</remote-name>
@@ -481,11 +987,11 @@
             <local-name>[ward]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>ward</remote-alias>
-            <ordinal>26</ordinal>
+            <ordinal>14</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>ward_name</remote-name>
@@ -493,12 +999,12 @@
             <local-name>[ward_name]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>ward_name</remote-alias>
-            <ordinal>27</ordinal>
+            <ordinal>15</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>located_in_school</remote-name>
@@ -506,12 +1012,12 @@
             <local-name>[located_in_school]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>located_in_school</remote-alias>
-            <ordinal>28</ordinal>
+            <ordinal>16</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>school_name</remote-name>
@@ -519,12 +1025,12 @@
             <local-name>[school_name]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>school_name</remote-alias>
-            <ordinal>29</ordinal>
+            <ordinal>17</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>lat</remote-name>
@@ -532,11 +1038,11 @@
             <local-name>[lat]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>lat</remote-alias>
-            <ordinal>30</ordinal>
+            <ordinal>18</ordinal>
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>lng</remote-name>
@@ -544,11 +1050,11 @@
             <local-name>[lng]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>lng</remote-alias>
-            <ordinal>31</ordinal>
+            <ordinal>19</ordinal>
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>website</remote-name>
@@ -556,12 +1062,12 @@
             <local-name>[website]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>website</remote-alias>
-            <ordinal>32</ordinal>
+            <ordinal>20</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>website_name</remote-name>
@@ -569,12 +1075,12 @@
             <local-name>[website_name]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>website_name</remote-alias>
-            <ordinal>33</ordinal>
+            <ordinal>21</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>website_description</remote-name>
@@ -582,12 +1088,12 @@
             <local-name>[website_description]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>website_description</remote-alias>
-            <ordinal>34</ordinal>
+            <ordinal>22</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>consultant_fullname</remote-name>
@@ -595,12 +1101,12 @@
             <local-name>[consultant_fullname]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>consultant_fullname</remote-alias>
-            <ordinal>35</ordinal>
+            <ordinal>23</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>consultant_phone</remote-name>
@@ -608,12 +1114,12 @@
             <local-name>[consultant_phone]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>consultant_phone</remote-alias>
-            <ordinal>36</ordinal>
+            <ordinal>24</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>email</remote-name>
@@ -621,12 +1127,12 @@
             <local-name>[email]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>email</remote-alias>
-            <ordinal>37</ordinal>
+            <ordinal>25</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>contact_fullname</remote-name>
@@ -634,12 +1140,12 @@
             <local-name>[contact_fullname]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>contact_fullname</remote-alias>
-            <ordinal>38</ordinal>
+            <ordinal>26</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>contact_title</remote-name>
@@ -647,12 +1153,12 @@
             <local-name>[contact_title]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>contact_title</remote-alias>
-            <ordinal>39</ordinal>
+            <ordinal>27</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>phone</remote-name>
@@ -660,12 +1166,12 @@
             <local-name>[phone]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>phone</remote-alias>
-            <ordinal>40</ordinal>
+            <ordinal>28</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>contact_email</remote-name>
@@ -673,12 +1179,12 @@
             <local-name>[contact_email]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>contact_email</remote-alias>
-            <ordinal>41</ordinal>
+            <ordinal>29</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>dropinHours</remote-name>
@@ -686,12 +1192,12 @@
             <local-name>[dropinHours]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>dropinHours</remote-alias>
-            <ordinal>42</ordinal>
+            <ordinal>30</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>registeredHours</remote-name>
@@ -699,12 +1205,12 @@
             <local-name>[registeredHours]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>registeredHours</remote-alias>
-            <ordinal>43</ordinal>
+            <ordinal>31</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>virtualHours</remote-name>
@@ -712,12 +1218,12 @@
             <local-name>[virtualHours]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>virtualHours</remote-alias>
-            <ordinal>44</ordinal>
+            <ordinal>32</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>centre_type</remote-name>
@@ -725,12 +1231,12 @@
             <local-name>[centre_type]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>centre_type</remote-alias>
-            <ordinal>45</ordinal>
+            <ordinal>33</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>hourCategory</remote-name>
@@ -738,59 +1244,34 @@
             <local-name>[hourCategory]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>hourCategory</remote-alias>
-            <ordinal>46</ordinal>
+            <ordinal>34</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
             <collation flag='0' name='binary' />
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>Geometry</remote-name>
             <remote-type>8</remote-type>
-            <local-name>[Geometry (childcare_locations_clean.geojson)]</local-name>
+            <local-name>[Geometry]</local-name>
             <parent-name>[childcare_locations_clean.geojson]</parent-name>
             <remote-alias>Geometry</remote-alias>
-            <ordinal>47</ordinal>
+            <ordinal>35</ordinal>
             <local-type>spatial</local-type>
             <aggregation>Collect</aggregation>
             <contains-null>true</contains-null>
-            <object-id>[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]</object-id>
+            <object-id>[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]</object-id>
           </metadata-record>
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
-      <column caption='AREA NAME (toronto neighbourhoods clean.geojson) (copy)' datatype='string' name='[AREA NAME (toronto neighbourhoods clean.geojson) (copy)_2362841694598651904]' role='dimension' type='nominal'>
-        <calculation class='tableau' formula='[AREA_NAME (toronto_neighbourhoods_clean.geojson)]' />
-      </column>
-      <column caption='Area Attr Id' datatype='integer' name='[AREA_ATTR_ID]' role='dimension' type='ordinal' />
-      <column caption='Area Desc' datatype='string' name='[AREA_DESC]' role='dimension' type='nominal' />
-      <column caption='Area Id' datatype='integer' name='[AREA_ID]' role='dimension' type='ordinal' />
-      <column caption='Area Long Code' datatype='string' name='[AREA_LONG_CODE]' role='dimension' type='nominal' />
-      <column caption='AREA NAME (toronto childcare metrics.csv)' datatype='string' name='[AREA_NAME (toronto_childcare_metrics.csv)]' role='dimension' type='nominal' />
-      <column caption='AREA NAME (toronto neighbourhoods clean.geojson)' datatype='string' name='[AREA_NAME (toronto_neighbourhoods_clean.geojson)]' role='dimension' type='nominal' />
-      <column caption='Area Name' datatype='string' name='[AREA_NAME]' role='dimension' type='nominal' />
-      <column caption='Area Short Code' datatype='string' name='[AREA_SHORT_CODE]' role='dimension' type='nominal' />
-      <column caption='Classification' datatype='string' name='[CLASSIFICATION]' role='dimension' type='nominal' />
-      <column caption='Classification Code' datatype='string' name='[CLASSIFICATION_CODE]' role='dimension' type='nominal' />
-      <column caption='Filling NULL values for centres per 1000 children' datatype='real' name='[Calculation_2362841694613606401]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='IFNULL([centres_per_1000_children], 0)' />
-      </column>
-      <column caption='Geometry (childcare locations clean.geojson)' datatype='spatial' name='[Geometry (childcare_locations_clean.geojson)]' role='measure' type='nominal' />
-      <column caption='Geometry (childcare locations clean.geojson1)' datatype='spatial' name='[Geometry (childcare_locations_clean.geojson1)]' role='measure' type='nominal' />
-      <column caption='Geometry (toronto neighbourhoods clean.geojson)' datatype='spatial' name='[Geometry (toronto_neighbourhoods_clean.geojson)]' role='measure' type='nominal' />
-      <column caption='Objectid' datatype='real' name='[OBJECTID]' role='measure' type='quantitative' />
-      <column caption='Parent Area Id' datatype='string' name='[PARENT_AREA_ID]' role='dimension' type='nominal' />
-      <column caption='toronto_neighbourhoods_clean.geojson' datatype='table' name='[__tableau_internal_object_id__].[toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C]' role='measure' type='quantitative' />
-      <column caption='_Id (Childcare Locations Clean.Geojson)' datatype='integer' name='[_id (childcare_locations_clean.geojson)]' role='dimension' type='ordinal' />
+      <column caption='childcare_locations_clean.geojson' datatype='table' name='[__tableau_internal_object_id__].[childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA]' role='measure' type='quantitative' />
       <column caption='_Id' datatype='integer' name='[_id]' role='dimension' type='ordinal' />
       <column caption='Address' datatype='string' name='[address]' role='dimension' type='nominal' />
       <column caption='Agency' datatype='string' name='[agency]' role='dimension' type='nominal' />
       <column caption='Building Name' datatype='string' name='[buildingName]' role='dimension' type='nominal' />
       <column caption='Centre Type' datatype='string' name='[centre_type]' role='dimension' type='nominal' />
-      <column caption='Centres Per 1000 Children (Toronto Childcare Metrics.Csv1)' datatype='real' name='[centres_per_1000_children (toronto_childcare_metrics.csv1)]' role='measure' type='quantitative' />
-      <column caption='Centres Per 1000 Children' datatype='real' name='[centres_per_1000_children]' role='measure' type='quantitative' />
-      <column caption='Children 0 4' datatype='integer' name='[children_0_4]' role='measure' type='quantitative' />
       <column caption='Consultant Fullname' datatype='string' name='[consultant_fullname]' role='dimension' type='nominal' />
       <column caption='Consultant Phone' datatype='string' name='[consultant_phone]' role='dimension' type='nominal' />
       <column caption='Contact Email' datatype='string' name='[contact_email]' role='dimension' type='nominal' />
@@ -808,8 +1289,6 @@
       <column caption='Loc Id' datatype='integer' name='[loc_id]' role='dimension' type='ordinal' />
       <column caption='Located In School' datatype='string' name='[located_in_school]' role='dimension' type='nominal' />
       <column caption='Major Intersection' datatype='string' name='[major_intersection]' role='dimension' type='nominal' />
-      <column caption='Median After Tax Income 2020 Over 15' datatype='integer' name='[median_after_tax_income_2020_over_15]' role='measure' type='quantitative' />
-      <column caption='Operating Hours' datatype='string' name='[operating_hours]' role='dimension' type='nominal' />
       <column caption='Phone' datatype='string' name='[phone]' role='dimension' type='nominal' />
       <column caption='Program Types' datatype='string' name='[programTypes]' role='dimension' type='nominal' />
       <column caption='Program Name' datatype='string' name='[program_name]' role='dimension' type='nominal' />
@@ -817,84 +1296,84 @@
       <column caption='School Name' datatype='string' name='[school_name]' role='dimension' type='nominal' />
       <column caption='Service Name' datatype='string' name='[serviceName]' role='dimension' type='nominal' />
       <column caption='Service System Manager' datatype='string' name='[service_system_manager]' role='dimension' type='nominal' />
-      <column caption='Single Moms' datatype='integer' name='[single_moms]' role='measure' type='quantitative' />
       <column caption='Virtual Hours' datatype='string' name='[virtualHours]' role='dimension' type='nominal' />
       <column caption='Ward' datatype='integer' name='[ward]' role='measure' type='quantitative' />
       <column caption='Ward Name' datatype='string' name='[ward_name]' role='dimension' type='nominal' />
       <column caption='Website' datatype='string' name='[website]' role='dimension' type='nominal' />
       <column caption='Website Description' datatype='string' name='[website_description]' role='dimension' type='nominal' />
       <column caption='Website Name' datatype='string' name='[website_name]' role='dimension' type='nominal' />
+      <column-instance column='[hourCategory]' derivation='None' name='[none:hourCategory:nk]' pivot='key' type='nominal' />
       <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:hourCategory:nk]' palette='tableau10_10_0' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Afternoon only&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Other&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Morning only&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Full day&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;Weekend available&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Evening available&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;Canada&quot;' />
       </semantic-values>
       <object-graph>
         <objects>
-          <object caption='toronto_neighbourhoods_clean.geojson' id='toronto_neighbourhoods_clean.geojson_9E2E5713488C423CA79FB683475DB31C'>
+          <object caption='childcare_locations_clean.geojson' id='childcare_locations_clean.geojson_E31C6404C13C44CA80765AAC7E5936FA'>
             <properties context=''>
-              <relation join='left' type='join'>
-                <clause type='join'>
-                  <expression op='Intersects'>
-                    <expression op='[toronto_neighbourhoods_clean.geojson].[Geometry]' />
-                    <expression op='[childcare_locations_clean.geojson].[Geometry]' />
-                  </expression>
-                </clause>
-                <relation connection='ogrdirect.1edq0o901pp7eg18yhvgl1x8z1a0' name='toronto_neighbourhoods_clean.geojson' table='[toronto_neighbourhoods_clean.geojson]' type='table'>
-                  <columns>
-                    <column datatype='integer' name='_id' ordinal='0' />
-                    <column datatype='integer' name='AREA_ID' ordinal='1' />
-                    <column datatype='integer' name='AREA_ATTR_ID' ordinal='2' />
-                    <column datatype='string' name='PARENT_AREA_ID' ordinal='3' />
-                    <column datatype='string' name='AREA_SHORT_CODE' ordinal='4' />
-                    <column datatype='string' name='AREA_LONG_CODE' ordinal='5' />
-                    <column datatype='string' name='AREA_NAME' ordinal='6' />
-                    <column datatype='string' name='AREA_DESC' ordinal='7' />
-                    <column datatype='string' name='CLASSIFICATION' ordinal='8' />
-                    <column datatype='string' name='CLASSIFICATION_CODE' ordinal='9' />
-                    <column datatype='real' name='OBJECTID' ordinal='10' />
-                    <column datatype='spatial' name='Geometry' ordinal='11' />
-                  </columns>
-                </relation>
-                <relation connection='ogrdirect.1edq0o901pp7eg18yhvgl1x8z1a0' name='childcare_locations_clean.geojson' table='[childcare_locations_clean.geojson]' type='table'>
-                  <columns>
-                    <column datatype='integer' name='_id' ordinal='0' />
-                    <column datatype='string' name='service_system_manager' ordinal='1' />
-                    <column datatype='string' name='agency' ordinal='2' />
-                    <column datatype='integer' name='loc_id' ordinal='3' />
-                    <column datatype='string' name='program_name' ordinal='4' />
-                    <column datatype='string' name='languages' ordinal='5' />
-                    <column datatype='string' name='french_language_program' ordinal='6' />
-                    <column datatype='string' name='indigenous_program' ordinal='7' />
-                    <column datatype='string' name='programTypes' ordinal='8' />
-                    <column datatype='string' name='serviceName' ordinal='9' />
-                    <column datatype='string' name='buildingName' ordinal='10' />
-                    <column datatype='string' name='address' ordinal='11' />
-                    <column datatype='string' name='full_address' ordinal='12' />
-                    <column datatype='string' name='major_intersection' ordinal='13' />
-                    <column datatype='integer' name='ward' ordinal='14' />
-                    <column datatype='string' name='ward_name' ordinal='15' />
-                    <column datatype='string' name='located_in_school' ordinal='16' />
-                    <column datatype='string' name='school_name' ordinal='17' />
-                    <column datatype='real' name='lat' ordinal='18' />
-                    <column datatype='real' name='lng' ordinal='19' />
-                    <column datatype='string' name='website' ordinal='20' />
-                    <column datatype='string' name='website_name' ordinal='21' />
-                    <column datatype='string' name='website_description' ordinal='22' />
-                    <column datatype='string' name='consultant_fullname' ordinal='23' />
-                    <column datatype='string' name='consultant_phone' ordinal='24' />
-                    <column datatype='string' name='email' ordinal='25' />
-                    <column datatype='string' name='contact_fullname' ordinal='26' />
-                    <column datatype='string' name='contact_title' ordinal='27' />
-                    <column datatype='string' name='phone' ordinal='28' />
-                    <column datatype='string' name='contact_email' ordinal='29' />
-                    <column datatype='string' name='dropinHours' ordinal='30' />
-                    <column datatype='string' name='registeredHours' ordinal='31' />
-                    <column datatype='string' name='virtualHours' ordinal='32' />
-                    <column datatype='string' name='centre_type' ordinal='33' />
-                    <column datatype='string' name='hourCategory' ordinal='34' />
-                    <column datatype='spatial' name='Geometry' ordinal='35' />
-                  </columns>
-                </relation>
+              <relation connection='ogrdirect.0304fl20hy6zyb175zsa60p0sl5q' name='childcare_locations_clean.geojson' table='[childcare_locations_clean.geojson]' type='table'>
+                <columns>
+                  <column datatype='integer' name='_id' ordinal='0' />
+                  <column datatype='string' name='service_system_manager' ordinal='1' />
+                  <column datatype='string' name='agency' ordinal='2' />
+                  <column datatype='integer' name='loc_id' ordinal='3' />
+                  <column datatype='string' name='program_name' ordinal='4' />
+                  <column datatype='string' name='languages' ordinal='5' />
+                  <column datatype='string' name='french_language_program' ordinal='6' />
+                  <column datatype='string' name='indigenous_program' ordinal='7' />
+                  <column datatype='string' name='programTypes' ordinal='8' />
+                  <column datatype='string' name='serviceName' ordinal='9' />
+                  <column datatype='string' name='buildingName' ordinal='10' />
+                  <column datatype='string' name='address' ordinal='11' />
+                  <column datatype='string' name='full_address' ordinal='12' />
+                  <column datatype='string' name='major_intersection' ordinal='13' />
+                  <column datatype='integer' name='ward' ordinal='14' />
+                  <column datatype='string' name='ward_name' ordinal='15' />
+                  <column datatype='string' name='located_in_school' ordinal='16' />
+                  <column datatype='string' name='school_name' ordinal='17' />
+                  <column datatype='real' name='lat' ordinal='18' />
+                  <column datatype='real' name='lng' ordinal='19' />
+                  <column datatype='string' name='website' ordinal='20' />
+                  <column datatype='string' name='website_name' ordinal='21' />
+                  <column datatype='string' name='website_description' ordinal='22' />
+                  <column datatype='string' name='consultant_fullname' ordinal='23' />
+                  <column datatype='string' name='consultant_phone' ordinal='24' />
+                  <column datatype='string' name='email' ordinal='25' />
+                  <column datatype='string' name='contact_fullname' ordinal='26' />
+                  <column datatype='string' name='contact_title' ordinal='27' />
+                  <column datatype='string' name='phone' ordinal='28' />
+                  <column datatype='string' name='contact_email' ordinal='29' />
+                  <column datatype='string' name='dropinHours' ordinal='30' />
+                  <column datatype='string' name='registeredHours' ordinal='31' />
+                  <column datatype='string' name='virtualHours' ordinal='32' />
+                  <column datatype='string' name='centre_type' ordinal='33' />
+                  <column datatype='string' name='hourCategory' ordinal='34' />
+                  <column datatype='spatial' name='Geometry' ordinal='35' />
+                </columns>
               </relation>
             </properties>
           </object>
@@ -905,93 +1384,159 @@
   <mapsources>
     <mapsource name='Tableau' />
   </mapsources>
+  <actions>
+    <action caption='Highlight Neighbourhood on Map' name='[Action1_E47C9D706C984F07B6FBB6DFA954FAC8]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard 1' type='sheet' worksheet='Sheet 2' />
+      <link caption='Highlight Neighbourhood on Map' delimiter=',' escape='\' expression='tsl:Dashboard%201?%5Bfederated.1jturz40r844kz176d9lc0ljkg1t%5D.%5BNeighbourhood_Name%5D~s0=&lt;[federated.1jturz40r844kz176d9lc0ljkg1t].[Neighbourhood_Name]~na&gt;' include-null='true' multi-select='true' url-escape='true' />
+      <command command='tsc:tsl-filter'>
+        <param name='exclude' value='Sheet 2' />
+        <param name='target' value='Dashboard 1' />
+      </command>
+    </action>
+    <action caption='Filter1' name='[Action2_B37E3141883E48789527D8D2569A229E]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard 1' type='sheet' worksheet='Top 10 Neighbourhoods by Childcare Demand (Children Ages 0-4)' />
+      <link caption='Filter1' delimiter=',' escape='\' expression='tsl:Dashboard%201?%5Bfederated.1jturz40r844kz176d9lc0ljkg1t%5D.%5BNeighbourhood_Name%5D~s0=&lt;[federated.1jturz40r844kz176d9lc0ljkg1t].[Neighbourhood_Name]~na&gt;' include-null='true' multi-select='true' url-escape='true' />
+      <command command='tsc:tsl-filter'>
+        <param name='exclude' value='Top 10 Neighbourhoods by Childcare Demand (Children Ages 0-4),Sheet 2' />
+        <param name='target' value='Dashboard 1' />
+      </command>
+    </action>
+    <datasources>
+      <datasource caption='master_df' name='federated.1jturz40r844kz176d9lc0ljkg1t' />
+    </datasources>
+    <datasource-dependencies datasource='federated.1jturz40r844kz176d9lc0ljkg1t'>
+      <column caption='Neighbourhood Name' datatype='string' name='[Neighbourhood_Name]' role='dimension' type='nominal' />
+    </datasource-dependencies>
+  </actions>
   <worksheets>
-    <worksheet name='Access vs. Need'>
+    <worksheet name='Mapping Childcare Access Gaps in Toronto'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
       <table>
         <view>
           <datasources>
-            <datasource caption='nia_neighbourhoods_clean.geojson+ (Multiple Connections)' name='federated.1jd51e61fo6bvg1dfn3zu18fz4vd' />
+            <datasource caption='master_df' name='federated.1jturz40r844kz176d9lc0ljkg1t' />
+            <datasource caption='childcare_locations_clean' name='federated.0fqabnt0xowcxu13gzkdh0cbrbu7' />
           </datasources>
           <mapsources>
             <mapsource name='Tableau' />
           </mapsources>
-          <datasource-dependencies datasource='federated.1jd51e61fo6bvg1dfn3zu18fz4vd'>
-            <column caption='AREA NAME (toronto childcare metrics.csv)' datatype='string' name='[AREA_NAME (toronto_childcare_metrics.csv)]' role='dimension' type='nominal' />
-            <column caption='Centres Per 1000 Children' datatype='real' name='[centres_per_1000_children]' role='measure' type='quantitative' />
-            <column caption='Children 0 4' datatype='integer' name='[children_0_4]' role='measure' type='quantitative' />
-            <column caption='Median After Tax Income 2020 Over 15' datatype='integer' name='[median_after_tax_income_2020_over_15]' role='measure' type='quantitative' />
-            <column-instance column='[AREA_NAME (toronto_childcare_metrics.csv)]' derivation='None' name='[none:AREA_NAME (toronto_childcare_metrics.csv):nk]' pivot='key' type='nominal' />
-            <column caption='Single Moms' datatype='integer' name='[single_moms]' role='measure' type='quantitative' />
-            <column-instance column='[centres_per_1000_children]' derivation='Sum' name='[sum:centres_per_1000_children:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[children_0_4]' derivation='Sum' name='[sum:children_0_4:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[median_after_tax_income_2020_over_15]' derivation='Sum' name='[sum:median_after_tax_income_2020_over_15:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[single_moms]' derivation='Sum' name='[sum:single_moms:qk]' pivot='key' type='quantitative' />
+          <datasource-dependencies datasource='federated.0fqabnt0xowcxu13gzkdh0cbrbu7'>
+            <column datatype='spatial' name='[Geometry]' role='measure' type='nominal' />
+            <column caption='Address' datatype='string' name='[address]' role='dimension' type='nominal' />
+            <column-instance column='[program_name]' derivation='Attribute' name='[attr:program_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Geometry]' derivation='Collect' name='[clct:Geometry:nk]' pivot='key' type='nominal' />
+            <column caption='Hour Category' datatype='string' name='[hourCategory]' role='dimension' type='nominal' />
+            <column-instance column='[address]' derivation='None' name='[none:address:nk]' pivot='key' type='nominal' />
+            <column-instance column='[hourCategory]' derivation='None' name='[none:hourCategory:nk]' pivot='key' type='nominal' />
+            <column caption='Program Name' datatype='string' name='[program_name]' role='dimension' type='nominal' />
           </datasource-dependencies>
-          <aggregation value='true' />
-        </view>
-        <style>
-          <style-rule element='map'>
-            <format attr='washout' value='0.0' />
-          </style-rule>
-        </style>
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-            <encodings>
-              <color column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[sum:median_after_tax_income_2020_over_15:qk]' />
-              <size column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[sum:children_0_4:qk]' />
-              <lod column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:AREA_NAME (toronto_childcare_metrics.csv):nk]' />
-            </encodings>
-            <style>
-              <style-rule element='mark'>
-                <format attr='mark-labels-cull' value='true' />
-                <format attr='mark-labels-show' value='false' />
-              </style-rule>
-            </style>
-          </pane>
-        </panes>
-        <rows>[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[sum:single_moms:qk]</rows>
-        <cols>[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[sum:centres_per_1000_children:qk]</cols>
-      </table>
-      <simple-id uuid='{5B7680E9-E48B-48A3-9F51-A4BDA9A2523E}' />
-    </worksheet>
-    <worksheet name='Sheet 3'>
-      <table>
-        <view>
-          <datasources>
-            <datasource caption='nia_neighbourhoods_clean.geojson+ (Multiple Connections)' name='federated.1jd51e61fo6bvg1dfn3zu18fz4vd' />
-          </datasources>
-          <mapsources>
-            <mapsource name='Tableau' />
-          </mapsources>
-          <datasource-dependencies datasource='federated.1jd51e61fo6bvg1dfn3zu18fz4vd'>
-            <column caption='AREA NAME (toronto neighbourhoods clean.geojson) (copy)' datatype='string' name='[AREA NAME (toronto neighbourhoods clean.geojson) (copy)_2362841694598651904]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='[AREA_NAME (toronto_neighbourhoods_clean.geojson)]' />
+          <datasource-dependencies datasource='federated.1jturz40r844kz176d9lc0ljkg1t'>
+            <column caption='NIA clean' datatype='string' name='[Calculation_2362841694638379010]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IFNULL([is_nia],&apos;False&apos;)' />
             </column>
-            <column caption='AREA NAME (toronto neighbourhoods clean.geojson)' datatype='string' name='[AREA_NAME (toronto_neighbourhoods_clean.geojson)]' role='dimension' type='nominal' />
-            <column caption='Geometry (childcare locations clean.geojson1)' datatype='spatial' name='[Geometry (childcare_locations_clean.geojson1)]' role='measure' type='nominal' />
-            <column caption='Geometry (toronto neighbourhoods clean.geojson)' datatype='spatial' name='[Geometry (toronto_neighbourhoods_clean.geojson)]' role='measure' type='nominal' />
-            <column caption='Centres Per 1000 Children (Toronto Childcare Metrics.Csv1)' datatype='real' name='[centres_per_1000_children (toronto_childcare_metrics.csv1)]' role='measure' type='quantitative' />
-            <column-instance column='[Geometry (childcare_locations_clean.geojson1)]' derivation='Collect' name='[clct:Geometry (childcare_locations_clean.geojson1):nk]' pivot='key' type='nominal' />
-            <column-instance column='[Geometry (toronto_neighbourhoods_clean.geojson)]' derivation='Collect' name='[clct:Geometry (toronto_neighbourhoods_clean.geojson):nk]' pivot='key' type='nominal' />
-            <column-instance column='[AREA NAME (toronto neighbourhoods clean.geojson) (copy)_2362841694598651904]' derivation='None' name='[none:AREA NAME (toronto neighbourhoods clean.geojson) (copy)_2362841694598651904:nk]' pivot='key' type='nominal' />
-            <column-instance column='[centres_per_1000_children (toronto_childcare_metrics.csv1)]' derivation='None' name='[none:centres_per_1000_children (toronto_childcare_metrics.csv1):qk]' pivot='key' type='quantitative' />
+            <column datatype='spatial' name='[Geometry]' role='measure' type='nominal' />
+            <column caption='Neighbourhood Name' datatype='string' name='[Neighbourhood_Name]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_2362841694638379010]' derivation='Attribute' name='[attr:Calculation_2362841694638379010:nk]' pivot='key' type='nominal' />
+            <column caption='Centres Per 1000 Children' datatype='real' name='[centres_per_1000_children]' role='measure' type='quantitative' />
+            <column-instance column='[Geometry]' derivation='Collect' name='[clct:Geometry:nk]' pivot='key' type='nominal' />
+            <column caption='Is Nia' datatype='string' name='[is_nia]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_2362841694638379010]' derivation='None' name='[none:Calculation_2362841694638379010:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Neighbourhood_Name]' derivation='None' name='[none:Neighbourhood_Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[centres_per_1000_children]' derivation='None' name='[none:centres_per_1000_children:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[centres_per_1000_children]' derivation='Sum' name='[sum:centres_per_1000_children:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]'>
+            <groupfilter function='level-members' level='[none:hourCategory:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1jturz40r844kz176d9lc0ljkg1t].[Action (Neighbourhood Name)]'>
+            <groupfilter function='level-members' level='[Neighbourhood_Name]' user:ui-action-filter='[Action1_E47C9D706C984F07B6FBB6DFA954FAC8]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]'>
+            <groupfilter function='level-members' level='[none:Calculation_2362841694638379010:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]'>
+            <groupfilter function='level-members' level='[none:Neighbourhood_Name:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]</column>
+            <column>[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]</column>
+            <column>[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]</column>
+            <column>[federated.1jturz40r844kz176d9lc0ljkg1t].[Action (Neighbourhood Name)]</column>
+          </slices>
           <aggregation value='true' />
         </view>
         <style>
           <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[Longitude (generated)]' field-type='quantitative' max='-8804155.4518561587' min='-8868318.9441876076' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[Latitude (generated)]' field-type='quantitative' max='5445594.8893419299' min='5398333.8021805193' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.1jturz40r844kz176d9lc0ljkg1t].[Longitude (generated)]' field-type='quantitative' max='-8757688.2296230849' min='-8916267.8686151858' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.1jturz40r844kz176d9lc0ljkg1t].[Latitude (generated)]' field-type='quantitative' max='5446996.9843835263' min='5396902.0831906451' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
           </style-rule>
           <style-rule element='mark'>
-            <encoding attr='color' field='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:centres_per_1000_children (toronto_childcare_metrics.csv1):qk]' num-steps='4' palette='blue_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:centres_per_1000_children:qk]' num-steps='4' palette='blue_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]' value='Legend: Availability'>
+              <formatted-text>
+                <run fontname='Georgia'>Legend: Availability</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+          <style-rule element='map-layer'>
+            <format attr='enabled' id='b01002_001e' value='false' />
+            <format attr='enabled' id='b01002_002e' value='false' />
+            <format attr='enabled' id='b01002_003e' value='false' />
+            <format attr='enabled' id='dp02_0001e' value='false' />
+            <format attr='enabled' id='dp02_0015e' value='false' />
+            <format attr='enabled' id='dp03_0027e_plus_dp03_0029e' value='false' />
+            <format attr='enabled' id='dp03_0028e' value='false' />
+            <format attr='enabled' id='dp03_0030e_plus_dp03_0031e' value='false' />
+            <format attr='enabled' id='dp03_0062e' value='false' />
+            <format attr='enabled' id='dp03_0088e' value='false' />
+            <format attr='enabled' id='dp04_0001e' value='false' />
+            <format attr='enabled' id='dp04_0046e' value='false' />
+            <format attr='enabled' id='dp04_0047e' value='false' />
+            <format attr='enabled' id='dp04_0089e' value='false' />
+            <format attr='enabled' id='dp05_0001e' value='false' />
+            <format attr='enabled' id='dp05_0002e_div_dp05_0003e' value='false' />
+            <format attr='enabled' id='dp05_0032e' value='false' />
+            <format attr='enabled' id='dp05_0033e' value='false' />
+            <format attr='enabled' id='dp05_0034e' value='false' />
+            <format attr='enabled' id='dp05_0039e' value='false' />
+            <format attr='enabled' id='dp05_0047e' value='false' />
+            <format attr='enabled' id='dp05_0053e' value='false' />
+            <format attr='enabled' id='dp05_0066e' value='false' />
+            <format attr='enabled' id='dp05_0077e' value='false' />
           </style-rule>
           <style-rule element='map'>
-            <format attr='washout' value='0.0' />
+            <format attr='washout' value='0' />
+            <format attr='map-style' value='light' />
+          </style-rule>
+          <style-rule element='map-data-layer'>
+            <format attr='palette' value='tableau-map-blue-green-light' />
+            <format attr='geo-area-type' value='State' />
+          </style-rule>
+          <style-rule element='quick-filter'>
+            <format attr='title' field='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]' value='Neighbourhoods'>
+              <formatted-text>
+                <run fontname='Georgia'>Neighbourhoods</run>
+              </formatted-text>
+            </format>
+            <format attr='title' field='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]' value='Childcare Availability&#10;'>
+              <formatted-text>
+                <run fontname='Georgia'>Childcare Availability</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </format>
+            <format attr='title' field='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' value='Improvement Area'>
+              <formatted-text>
+                <run fontname='Georgia'>Improvement Area</run>
+              </formatted-text>
+            </format>
           </style-rule>
         </style>
         <panes customization-axis='layer'>
@@ -1001,176 +1546,675 @@
             </view>
             <mark class='Automatic' />
           </pane>
-          <pane generated-title='toronto_neighbourhoods_clean.geojson.Geometry (tor' id='0' selection-relaxation-option='selection-relaxation-allow'>
+          <pane generated-title='Geometry' id='0' selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
             <encodings>
-              <color column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:centres_per_1000_children (toronto_childcare_metrics.csv1):qk]' />
-              <text column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:AREA NAME (toronto neighbourhoods clean.geojson) (copy)_2362841694598651904:nk]' />
-              <lod column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[clct:Geometry (toronto_neighbourhoods_clean.geojson):nk]' />
-              <geometry column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[clct:Geometry (toronto_neighbourhoods_clean.geojson):nk]' />
+              <color column='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:centres_per_1000_children:qk]' />
+              <tooltip column='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:centres_per_1000_children:qk]' />
+              <tooltip column='[federated.1jturz40r844kz176d9lc0ljkg1t].[attr:Calculation_2362841694638379010:nk]' />
+              <text column='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]' />
+              <lod column='[federated.1jturz40r844kz176d9lc0ljkg1t].[clct:Geometry:nk]' />
+              <geometry column='[federated.1jturz40r844kz176d9lc0ljkg1t].[clct:Geometry:nk]' />
             </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#757575' fontname='Georgia'>Neighbourhood Name:&#9;</run>
+                <run bold='true' fontname='Georgia'><![CDATA[<[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#757575' fontname='Georgia'>Centres Per 1000 Children:&#9;</run>
+                <run bold='true' fontname='Georgia'><![CDATA[<[federated.1jturz40r844kz176d9lc0ljkg1t].[none:centres_per_1000_children:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#757575' fontname='Georgia'>Neighbourhood Improvement Area:	</run>
+                <run bold='true' fontname='Georgia'><![CDATA[<[federated.1jturz40r844kz176d9lc0ljkg1t].[attr:Calculation_2362841694638379010:nk]>]]></run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
             <style>
               <style-rule element='mark'>
-                <format attr='mark-labels-cull' value='true' />
                 <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
                 <format attr='has-stroke' value='true' />
-                <format attr='stroke-color' value='#c0c0c0' />
+                <format attr='stroke-color' value='#b4b4b4' />
               </style-rule>
             </style>
           </pane>
-          <pane id='3' selection-relaxation-option='selection-relaxation-allow' title='toronto_neighbourhoods_clean.geojson.Geometry (chi'>
+          <pane generated-title='Geometry (2)' id='2' selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
-            <mark class='Automatic' />
-            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <mark class='Circle' />
             <encodings>
-              <lod column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[clct:Geometry (childcare_locations_clean.geojson1):nk]' />
-              <geometry column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[clct:Geometry (childcare_locations_clean.geojson1):nk]' />
+              <color column='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]' />
+              <lod column='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[clct:Geometry:nk]' />
+              <lod column='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:address:nk]' />
+              <tooltip column='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[attr:program_name:nk]' />
             </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#757575' fontname='Georgia'>Program Name:&#9;</run>
+                <run bold='true' fontname='Georgia'><![CDATA[<[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[attr:program_name:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#757575' fontname='Georgia'>Address:&#9;</run>
+                <run bold='true' fontname='Georgia'><![CDATA[<[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:address:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#757575' fontname='Georgia'>Availability:&#9;</run>
+                <run bold='true' fontname='Georgia'><![CDATA[<[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]>]]></run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
             <style>
               <style-rule element='mark'>
-                <format attr='size' value='1.7031491994857788' />
+                <format attr='mark-transparency' value='180' />
               </style-rule>
             </style>
           </pane>
         </panes>
-        <rows>[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[Latitude (generated)]</rows>
-        <cols>[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[Longitude (generated)]</cols>
+        <rows>[federated.1jturz40r844kz176d9lc0ljkg1t].[Latitude (generated)]</rows>
+        <cols>[federated.1jturz40r844kz176d9lc0ljkg1t].[Longitude (generated)]</cols>
       </table>
-      <simple-id uuid='{6637CC5A-6204-4EC4-B01B-EAC593656A03}' />
+      <simple-id uuid='{DF3B5EA3-9F36-4ED6-9771-5B62BD16D94E}' />
     </worksheet>
-    <worksheet name='Toronto Childcare Availability &amp; Accessibility Map'>
+    <worksheet name='Sheet 2'>
       <layout-options>
         <title>
           <formatted-text>
-            <run fontname='Georgia'>Toronto Childcare Availability &amp; Accessibility Map</run>
+            <run fontname='Georgia'>Identifying Critical Gaps: Low-Income Neighbourhoods with Insufficient Childcare Access</run>
           </formatted-text>
         </title>
       </layout-options>
       <table>
         <view>
           <datasources>
-            <datasource caption='nia_neighbourhoods_clean.geojson+ (Multiple Connections)' name='federated.1jd51e61fo6bvg1dfn3zu18fz4vd' />
+            <datasource caption='master_df' name='federated.1jturz40r844kz176d9lc0ljkg1t' />
           </datasources>
-          <mapsources>
-            <mapsource name='Tableau' />
-          </mapsources>
-          <datasource-dependencies datasource='federated.1jd51e61fo6bvg1dfn3zu18fz4vd'>
-            <column caption='AREA NAME (toronto neighbourhoods clean.geojson)' datatype='string' name='[AREA_NAME (toronto_neighbourhoods_clean.geojson)]' role='dimension' type='nominal' />
-            <column caption='Filling NULL values for centres per 1000 children' datatype='real' name='[Calculation_2362841694613606401]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='IFNULL([centres_per_1000_children], 0)' />
+          <datasource-dependencies datasource='federated.1jturz40r844kz176d9lc0ljkg1t'>
+            <column caption='NIA clean' datatype='string' name='[Calculation_2362841694638379010]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IFNULL([is_nia],&apos;False&apos;)' />
             </column>
-            <column caption='Geometry (childcare locations clean.geojson)' datatype='spatial' name='[Geometry (childcare_locations_clean.geojson)]' role='measure' type='nominal' />
-            <column caption='Geometry (toronto neighbourhoods clean.geojson)' datatype='spatial' name='[Geometry (toronto_neighbourhoods_clean.geojson)]' role='measure' type='nominal' />
-            <column-instance column='[centres_per_1000_children]' derivation='Attribute' name='[attr:centres_per_1000_children:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[operating_hours]' derivation='Attribute' name='[attr:operating_hours:nk]' pivot='key' type='nominal' />
+            <column caption='Neighbourhood Name' datatype='string' name='[Neighbourhood_Name]' role='dimension' type='nominal' />
             <column caption='Centres Per 1000 Children' datatype='real' name='[centres_per_1000_children]' role='measure' type='quantitative' />
-            <column-instance column='[Geometry (childcare_locations_clean.geojson)]' derivation='Collect' name='[clct:Geometry (childcare_locations_clean.geojson):nk]' pivot='key' type='nominal' />
-            <column-instance column='[Geometry (toronto_neighbourhoods_clean.geojson)]' derivation='Collect' name='[clct:Geometry (toronto_neighbourhoods_clean.geojson):nk]' pivot='key' type='nominal' />
-            <column-instance column='[AREA_NAME (toronto_neighbourhoods_clean.geojson)]' derivation='None' name='[none:AREA_NAME (toronto_neighbourhoods_clean.geojson):nk]' pivot='key' type='nominal' />
-            <column-instance column='[operating_hours]' derivation='None' name='[none:operating_hours:nk]' pivot='key' type='nominal' />
-            <column-instance column='[ward_name]' derivation='None' name='[none:ward_name:nk]' pivot='key' type='nominal' />
-            <column caption='Operating Hours' datatype='string' name='[operating_hours]' role='dimension' type='nominal' />
-            <column-instance column='[Calculation_2362841694613606401]' derivation='Sum' name='[sum:Calculation_2362841694613606401:qk]' pivot='key' type='quantitative' />
-            <column caption='Ward Name' datatype='string' name='[ward_name]' role='dimension' type='nominal' />
+            <column caption='Is Nia' datatype='string' name='[is_nia]' role='dimension' type='nominal' />
+            <column caption='Median After Tax Income 2020 Over 15' datatype='real' name='[median_after_tax_income_2020_over_15]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_2362841694638379010]' derivation='None' name='[none:Calculation_2362841694638379010:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Neighbourhood_Name]' derivation='None' name='[none:Neighbourhood_Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[centres_per_1000_children]' derivation='Sum' name='[sum:centres_per_1000_children:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[median_after_tax_income_2020_over_15]' derivation='Sum' name='[sum:median_after_tax_income_2020_over_15:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]'>
+            <groupfilter function='level-members' level='[none:Calculation_2362841694638379010:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]</column>
+          </slices>
           <aggregation value='true' />
         </view>
         <style>
-          <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[Longitude (generated)]' field-type='quantitative' max='-8804264.8525250945' min='-8868428.3448565472' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[Latitude (generated)]' field-type='quantitative' max='5446196.5946903052' min='5398662.0025472539' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
-          </style-rule>
           <style-rule element='mark'>
-            <encoding attr='color' field='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[attr:centres_per_1000_children:qk]' num-steps='6' palette='red_black_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_after_tax_income_2020_over_15:qk]' num-steps='6' palette='blue_10_0' reverse='true' type='interpolated' />
           </style-rule>
-          <style-rule element='map'>
-            <format attr='washout' value='0.0' />
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='fill-above' id='refline2' value='#00000000' />
+            <format attr='fill-below' id='refline2' value='#00000000' />
+            <format attr='fill-above' id='refline1' value='#00000000' />
+            <format attr='fill-below' id='refline1' value='#00000000' />
           </style-rule>
         </style>
-        <panes customization-axis='layer'>
-          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <encodings>
+              <color column='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_after_tax_income_2020_over_15:qk]' />
+              <shape column='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' />
+              <lod column='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]' />
+            </encodings>
+            <reference-line axis-column='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_after_tax_income_2020_over_15:qk]' enable-instant-analytics='true' formula='average' id='refline0' label='Average Income' label-type='custom' probability='95' scope='per-pane' value-column='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_after_tax_income_2020_over_15:qk]' z-order='1' />
+            <reference-line axis-column='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:centres_per_1000_children:qk]' enable-instant-analytics='true' formula='average' id='refline1' label='Average Density' label-type='custom' probability='95' scope='per-pane' value-column='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:centres_per_1000_children:qk]' z-order='2' />
+          </pane>
+        </panes>
+        <rows>[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:centres_per_1000_children:qk]</rows>
+        <cols>[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_after_tax_income_2020_over_15:qk]</cols>
+      </table>
+      <simple-id uuid='{2A138286-AA86-4D9A-A1B1-D454F826508A}' />
+    </worksheet>
+    <worksheet name='Top 10 Neighbourhoods by Childcare Demand (Children Ages 0-4)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontname='Georgia' fontsize='9'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='master_df' name='federated.1jturz40r844kz176d9lc0ljkg1t' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1jturz40r844kz176d9lc0ljkg1t'>
+            <column caption='Neighbourhood Name' datatype='string' name='[Neighbourhood_Name]' role='dimension' type='nominal' />
+            <column caption='Children 0 4' datatype='real' name='[children_0_4]' role='measure' type='quantitative' />
+            <column-instance column='[Neighbourhood_Name]' derivation='None' name='[none:Neighbourhood_Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[children_0_4]' derivation='Sum' name='[sum:children_0_4:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1jturz40r844kz176d9lc0ljkg1t].[Action (Neighbourhood Name)]'>
+            <groupfilter function='level-members' level='[Neighbourhood_Name]' user:ui-action-filter='[Action1_E47C9D706C984F07B6FBB6DFA954FAC8]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([children_0_4])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:Neighbourhood_Name:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:children_0_4:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]</column>
+            <column>[federated.1jturz40r844kz176d9lc0ljkg1t].[Action (Neighbourhood Name)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
-          </pane>
-          <pane generated-title='toronto_neighbourhoods_clean.geojson.Geometry (tor' id='1' selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Multipolygon' />
             <encodings>
-              <color column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[attr:centres_per_1000_children:qk]' />
-              <tooltip column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[sum:Calculation_2362841694613606401:qk]' />
-              <text column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:AREA_NAME (toronto_neighbourhoods_clean.geojson):nk]' />
-              <lod column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[clct:Geometry (toronto_neighbourhoods_clean.geojson):nk]' />
-              <geometry column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[clct:Geometry (toronto_neighbourhoods_clean.geojson):nk]' />
+              <color column='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:children_0_4:qk]' />
+              <text column='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:children_0_4:qk]' />
             </encodings>
-            <customized-tooltip>
-              <formatted-text>
-                <run fontcolor='#757575' fontname='Georgia'>Neighbhourhood:&#9;</run>
-                <run bold='true' fontname='Georgia'><![CDATA[<[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:AREA_NAME (toronto_neighbourhoods_clean.geojson):nk]>]]></run>
-                <run>Æ&#10;</run>
-                <run fontcolor='#757575' fontname='Georgia'>Centres Per 1000 Children:&#9;</run>
-                <run bold='true' fontname='Georgia'><![CDATA[<[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[attr:centres_per_1000_children:qk]>]]></run>
-              </formatted-text>
-            </customized-tooltip>
             <style>
               <style-rule element='mark'>
                 <format attr='mark-labels-show' value='true' />
                 <format attr='mark-labels-cull' value='true' />
-                <format attr='mark-labels-mode' value='all' />
-              </style-rule>
-            </style>
-          </pane>
-          <pane generated-title='childcare_locations_clean.geojson.Geometry (childc (2)' id='4' selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-            <mark-sizing mark-sizing-setting='marks-scaling-off' />
-            <encodings>
-              <color column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:operating_hours:nk]' />
-              <tooltip column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[attr:operating_hours:nk]' />
-              <text column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:ward_name:nk]' />
-              <lod column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[clct:Geometry (childcare_locations_clean.geojson):nk]' />
-              <geometry column='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[clct:Geometry (childcare_locations_clean.geojson):nk]' />
-            </encodings>
-            <customized-tooltip>
-              <formatted-text>
-                <run fontcolor='#757575' fontname='Georgia'>Ward:&#9;</run>
-                <run bold='true' fontname='Georgia'><![CDATA[<[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:ward_name:nk]>]]></run>
-                <run>Æ&#10;</run>
-                <run fontcolor='#757575' fontname='Georgia'>Operating Hours:&#9;</run>
-                <run bold='true' fontname='Georgia'><![CDATA[<[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[attr:operating_hours:nk]>]]></run>
-                <run>Æ&#10;</run>
-              </formatted-text>
-            </customized-tooltip>
-            <customized-label>
-              <formatted-text />
-            </customized-label>
-            <style>
-              <style-rule element='mark'>
-                <format attr='mark-labels-cull' value='true' />
-                <format attr='mark-labels-show' value='true' />
-                <format attr='size' value='1' />
               </style-rule>
             </style>
           </pane>
         </panes>
-        <rows>[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[Latitude (generated)]</rows>
-        <cols>[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[Longitude (generated)]</cols>
+        <rows>[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]</rows>
+        <cols>[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:children_0_4:qk]</cols>
       </table>
-      <simple-id uuid='{91FF69AB-CE83-430B-8A96-E19487A089CB}' />
+      <simple-id uuid='{86479C36-06B3-4F5A-B800-736EAF535B9E}' />
     </worksheet>
   </worksheets>
-  <windows source-height='30'>
-    <window class='worksheet' name='Toronto Childcare Availability &amp; Accessibility Map'>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 1'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' preset-index='1' sizing-mode='fixed' />
+      <datasources>
+        <datasource caption='childcare_locations_clean' name='federated.0fqabnt0xowcxu13gzkdh0cbrbu7' />
+        <datasource caption='master_df' name='federated.1jturz40r844kz176d9lc0ljkg1t' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0fqabnt0xowcxu13gzkdh0cbrbu7'>
+        <column caption='Hour Category' datatype='string' name='[hourCategory]' role='dimension' type='nominal' />
+        <column-instance column='[hourCategory]' derivation='None' name='[none:hourCategory:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <datasource-dependencies datasource='federated.1jturz40r844kz176d9lc0ljkg1t'>
+        <column caption='NIA clean' datatype='string' name='[Calculation_2362841694638379010]' role='dimension' type='nominal'>
+          <calculation class='tableau' formula='IFNULL([is_nia],&apos;False&apos;)' />
+        </column>
+        <column caption='Neighbourhood Name' datatype='string' name='[Neighbourhood_Name]' role='dimension' type='nominal' />
+        <column-instance column='[Calculation_2362841694638379010]' derivation='None' name='[none:Calculation_2362841694638379010:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Neighbourhood_Name]' derivation='None' name='[none:Neighbourhood_Name:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='23' layout-strategy-id='distribute-evenly' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='32750' id='8' name='Mapping Childcare Access Gaps in Toronto' w='98400' x='800' y='1000'>
+              <layout-cache minheight='244' minwidth='202' type-h='scalable' type-w='scalable' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone fixed-size='151' h='32625' id='16' is-fixed='true' name='Sheet 2' w='98400' x='800' y='33750'>
+              <layout-cache minheight='198' minwidth='152' type-h='scalable' type-w='scalable' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='32625' id='10' param='horz' type-v2='layout-flow' w='98400' x='800' y='66375'>
+              <zone h='32625' id='20' name='Top 10 Neighbourhoods by Childcare Demand (Children Ages 0-4)' w='54900' x='800' y='66375'>
+                <layout-cache fixed-size-h='1580' minwidth='260' type-h='fixed' type-w='scalable' />
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone fixed-size='435' h='32625' id='9' is-fixed='true' param='vert' type-v2='layout-flow' w='43500' x='55700' y='66375'>
+                <zone h='3625' id='11' mode='dropdown' name='Mapping Childcare Access Gaps in Toronto' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type-v2='filter' w='43500' x='55700' y='66375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='3625' id='12' mode='checkdropdown' name='Mapping Childcare Access Gaps in Toronto' param='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]' type-v2='filter' w='43500' x='55700' y='70000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='3625' id='13' mode='checkdropdown' name='Mapping Childcare Access Gaps in Toronto' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]' type-v2='filter' w='43500' x='55700' y='73625'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='3625' id='14' name='Mapping Childcare Access Gaps in Toronto' pane-specification-id='2' param='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]' type-v2='color' w='43500' x='55700' y='77250'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='3625' id='15' name='Mapping Childcare Access Gaps in Toronto' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:centres_per_1000_children:qk]' type-v2='color' w='43500' x='55700' y='80875'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='3625' id='17' name='Sheet 2' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type-v2='filter' w='43500' x='55700' y='84500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='3625' id='18' name='Sheet 2' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_after_tax_income_2020_over_15:qk]' type-v2='color' w='43500' x='55700' y='88125'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='3625' id='19' name='Sheet 2' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type-v2='shape' w='43500' x='55700' y='91750'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='24' h='3625' id='21' is-fixed='true' name='Top 10 Neighbourhoods by Childcare Demand (Children Ages 0-4)' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:children_0_4:qk]' type-v2='color' w='43500' x='55700' y='95375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='7000' id='24' type-v2='title' w='13500' x='4125' y='5500' />
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='1' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{51C05F50-1DD0-4DE0-9D9C-4FA7372A16EC}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 2'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource caption='childcare_locations_clean' name='federated.0fqabnt0xowcxu13gzkdh0cbrbu7' />
+        <datasource caption='master_df' name='federated.1jturz40r844kz176d9lc0ljkg1t' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0fqabnt0xowcxu13gzkdh0cbrbu7'>
+        <column caption='Hour Category' datatype='string' name='[hourCategory]' role='dimension' type='nominal' />
+        <column-instance column='[hourCategory]' derivation='None' name='[none:hourCategory:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <datasource-dependencies datasource='federated.1jturz40r844kz176d9lc0ljkg1t'>
+        <column caption='NIA clean' datatype='string' name='[Calculation_2362841694638379010]' role='dimension' type='nominal'>
+          <calculation class='tableau' formula='IFNULL([is_nia],&apos;False&apos;)' />
+        </column>
+        <column caption='Neighbourhood Name' datatype='string' name='[Neighbourhood_Name]' role='dimension' type='nominal' />
+        <column-instance column='[Calculation_2362841694638379010]' derivation='None' name='[none:Calculation_2362841694638379010:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Neighbourhood_Name]' derivation='None' name='[none:Neighbourhood_Name:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone forceUpdate='true' h='6750' id='5' type-v2='text' w='98400' x='800' y='1000'>
+            <formatted-text>
+              <run bold='true' fontalignment='1' fontcolor='#2548bb' fontname='Georgia' fontsize='25'>Closing The Gap: Mapping Childcare Access Disparities</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='46750' id='10' param='horz' type-v2='layout-flow' w='98400' x='800' y='7750'>
+            <zone h='46750' id='11' name='Mapping Childcare Access Gaps in Toronto' w='46300' x='800' y='7750'>
+              <layout-cache minwidth='202' type-h='fixed' type-w='scalable' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='46750' id='37' name='Top 10 Neighbourhoods by Childcare Demand (Children Ages 0-4)' w='52100' x='47100' y='7750'>
+              <layout-cache minwidth='260' type-h='fixed' type-w='scalable' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone h='8375' id='13' mode='checkdropdown' name='Mapping Childcare Access Gaps in Toronto' param='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]' type-v2='filter' w='22700' x='800' y='65500'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='36000' id='21' param='horz' type-v2='layout-flow' w='75700' x='23500' y='63000'>
+            <zone h='36000' id='24' param='vert' type-v2='layout-flow' w='75700' x='23500' y='63000'>
+              <zone h='36000' id='25' name='Sheet 2' w='75700' x='23500' y='63000'>
+                <layout-cache minheight='216' minwidth='152' type-h='scalable' type-w='scalable' />
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone h='12375' id='14' mode='checkdropdown' name='Mapping Childcare Access Gaps in Toronto' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]' type-v2='filter' w='22700' x='800' y='73875'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone fixed-size='24' h='12750' id='16' is-fixed='true' name='Mapping Childcare Access Gaps in Toronto' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:centres_per_1000_children:qk]' type-v2='color' w='22700' x='800' y='86250'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='4500' id='22' param='horz' type-v2='layout-flow' w='75700' x='23500' y='58500'>
+            <zone h='4500' id='26' name='Sheet 2' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type-v2='filter' w='16800' x='23500' y='58500'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='4500' id='27' name='Sheet 2' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_after_tax_income_2020_over_15:qk]' type-v2='color' w='17050' x='40300' y='58500'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='4500' id='28' name='Sheet 2' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type-v2='shape' w='24800' x='57350' y='58500'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='4500' id='38' name='Top 10 Neighbourhoods by Childcare Demand (Children Ages 0-4)' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:children_0_4:qk]' type-v2='color' w='17050' x='82150' y='58500'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone h='4000' id='36' param='horz' type-v2='layout-flow' w='75700' x='23500' y='54500' />
+          <zone h='11000' id='12' mode='dropdown' name='Mapping Childcare Access Gaps in Toronto' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type-v2='filter' w='22700' x='800' y='54500'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='3000' id='17' type-v2='dashboard-object' w='2400' x='0' y='57125'>
+          <button action=''>
+            <toggle-action>tabdoc:toggle-button-click-action window-id=&quot;{A1E18014-FA80-44F5-984B-E87C4F2EF78F}&quot; zone-id=&quot;17&quot; zone-ids=[3]</toggle-action>
+            <button-visual-state />
+            <button-visual-state />
+          </button>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1400' minheight='1400' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='32' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98858' id='31' param='vert' type-v2='layout-flow' w='95734' x='2133' y='571'>
+                <zone forceUpdate='true' h='8714' id='5' type-v2='text' w='95734' x='2133' y='571'>
+                  <formatted-text>
+                    <run bold='true' fontalignment='1' fontcolor='#2548bb' fontname='Georgia' fontsize='25'>Closing The Gap: Mapping Childcare Access Disparities</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='3714' id='12' mode='dropdown' name='Mapping Childcare Access Gaps in Toronto' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type-v2='filter' w='95734' x='2133' y='16998'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='3714' id='13' mode='checkdropdown' name='Mapping Childcare Access Gaps in Toronto' param='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]' type-v2='filter' w='95734' x='2133' y='20712'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='3714' id='14' mode='checkdropdown' name='Mapping Childcare Access Gaps in Toronto' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]' type-v2='filter' w='95734' x='2133' y='24426'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='20571' id='11' is-fixed='true' name='Mapping Childcare Access Gaps in Toronto' w='95734' x='2133' y='28140'>
+                  <layout-cache minwidth='202' type-h='fixed' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='24' h='4642' id='16' name='Mapping Childcare Access Gaps in Toronto' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:centres_per_1000_children:qk]' type-v2='color' w='95734' x='2133' y='48711'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='3714' id='26' mode='checkdropdown' name='Sheet 2' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type-v2='filter' w='95734' x='2133' y='64280'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='193' h='14357' id='25' is-fixed='true' name='Sheet 2' w='95734' x='2133' y='67994'>
+                  <layout-cache minheight='198' minwidth='152' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='4642' id='27' name='Sheet 2' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_after_tax_income_2020_over_15:qk]' type-v2='color' w='95734' x='2133' y='82351'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='4714' id='28' name='Sheet 2' pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type-v2='shape' w='95734' x='2133' y='86993'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{DC11989A-8E2C-4B88-89C3-EDF8166853AF}' />
+    </dashboard>
+    <dashboard name='Story 1' type='storyboard'>
+      <style />
+      <size maxheight='964' maxwidth='1016' minheight='964' minwidth='1016' />
+      <zones>
+        <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98340' id='1' param='vert' removable='false' type-v2='layout-flow' w='98426' x='787' y='830'>
+            <zone h='3423' id='3' type-v2='title' w='98426' x='787' y='830' />
+            <zone h='10477' id='4' is-fixed='true' paired-zone-id='5' removable='false' type-v2='flipboard-nav' w='98426' x='787' y='4253' />
+            <zone h='84440' id='5' paired-zone-id='4' removable='false' type-v2='flipboard' w='98426' x='787' y='14730'>
+              <flipboard active-id='1' nav-type='caption' show-nav-arrows='true'>
+                <story-points>
+                  <story-point caption='htrh' captured-sheet='Mapping Childcare Access Gaps in Toronto' id='1'>
+                    <currentDeltas>
+                      <worksheet name='Mapping Childcare Access Gaps in Toronto'>
+                        <filter column='[federated.1jturz40r844kz176d9lc0ljkg1t].[Action (Neighbourhood Name)]' delta-type='removed' />
+                        <style delta-type='added'>
+                          <style-rule element='axis'>
+                            <encoding attr='space' class='0' field='[federated.1jturz40r844kz176d9lc0ljkg1t].[Latitude (generated)]' field-type='quantitative' max='5446059.2273752224' min='5407666.7682548538' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+                            <encoding attr='space' class='0' field='[federated.1jturz40r844kz176d9lc0ljkg1t].[Longitude (generated)]' field-type='quantitative' max='-8820045.867130762' min='-8859690.7768787872' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+                          </style-rule>
+                        </style>
+                      </worksheet>
+                    </currentDeltas>
+                    <capturedDeltas>
+                      <worksheet name='Mapping Childcare Access Gaps in Toronto'>
+                        <filter column='[federated.1jturz40r844kz176d9lc0ljkg1t].[Action (Neighbourhood Name)]' delta-type='removed' />
+                        <style delta-type='added'>
+                          <style-rule element='axis'>
+                            <encoding attr='space' class='0' field='[federated.1jturz40r844kz176d9lc0ljkg1t].[Latitude (generated)]' field-type='quantitative' max='5460341.9929074543' min='5383557.0746667171' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+                            <encoding attr='space' class='0' field='[federated.1jturz40r844kz176d9lc0ljkg1t].[Longitude (generated)]' field-type='quantitative' max='-8797333.1393711101' min='-8876622.9588671606' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+                          </style-rule>
+                        </style>
+                      </worksheet>
+                    </capturedDeltas>
+                  </story-point>
+                  <story-point captured-sheet='' id='2' />
+                </story-points>
+              </flipboard>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{249513B1-BE0C-4327-975A-09DFF3885540}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='51'>
+    <window class='worksheet' name='Mapping Childcare Access Gaps in Toronto'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1192,17 +2236,20 @@
         </edge>
         <edge name='right'>
           <strip size='160'>
-            <card pane-specification-id='1' param='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[attr:centres_per_1000_children:qk]' type='color' />
-            <card pane-specification-id='4' param='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:operating_hours:nk]' type='color' />
+            <card mode='dropdown' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type='filter' />
+            <card mode='checkdropdown' param='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]' type='filter' />
+            <card mode='checkdropdown' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Neighbourhood_Name:nk]' type='filter' />
+            <card pane-specification-id='2' param='[federated.0fqabnt0xowcxu13gzkdh0cbrbu7].[none:hourCategory:nk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:centres_per_1000_children:qk]' type='color' />
           </strip>
         </edge>
       </cards>
       <viewpoint>
         <default-map-tool-selection tool='1' />
       </viewpoint>
-      <simple-id uuid='{9655D968-52F9-4C37-B832-C5C705DFA022}' />
+      <simple-id uuid='{CEF4D0DD-1F9E-4C5F-82DC-F63DB0F553DA}' />
     </window>
-    <window class='worksheet' name='Access vs. Need'>
+    <window class='worksheet' name='Sheet 2'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1224,14 +2271,31 @@
         </edge>
         <edge name='right'>
           <strip size='160'>
-            <card pane-specification-id='0' param='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[sum:median_after_tax_income_2020_over_15:qk]' type='color' />
-            <card pane-specification-id='0' param='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[sum:children_0_4:qk]' type='size' />
+            <card param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:median_after_tax_income_2020_over_15:qk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[none:Calculation_2362841694638379010:nk]' type='shape' />
           </strip>
         </edge>
       </cards>
-      <simple-id uuid='{2D2411CF-59C5-4E5B-8D28-9BD97D31F8AA}' />
+      <simple-id uuid='{9E116A72-1A7D-4588-8FD3-31E0C257B2F4}' />
     </window>
-    <window class='worksheet' maximized='true' name='Sheet 3'>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Mapping Childcare Access Gaps in Toronto'>
+          <zoom type='entire-view' />
+          <default-map-tool-selection tool='1' />
+        </viewpoint>
+        <viewpoint name='Sheet 2'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Top 10 Neighbourhoods by Childcare Demand (Children Ages 0-4)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='8' />
+      <simple-id uuid='{9297E6E3-821D-4FEB-A036-B261FF1048CB}' />
+    </window>
+    <window class='worksheet' name='Top 10 Neighbourhoods by Childcare Demand (Children Ages 0-4)'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1253,14 +2317,31 @@
         </edge>
         <edge name='right'>
           <strip size='160'>
-            <card pane-specification-id='0' param='[federated.1jd51e61fo6bvg1dfn3zu18fz4vd].[none:centres_per_1000_children (toronto_childcare_metrics.csv1):qk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1jturz40r844kz176d9lc0ljkg1t].[sum:children_0_4:qk]' type='color' />
           </strip>
         </edge>
       </cards>
-      <viewpoint>
-        <default-map-tool-selection tool='1' />
-      </viewpoint>
-      <simple-id uuid='{905ECE04-5CC0-42B6-87D5-99495E97241A}' />
+      <simple-id uuid='{21D7989D-FAAB-4F78-8B9C-5FD4A7B3D42E}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard 2'>
+      <viewpoints>
+        <viewpoint name='Mapping Childcare Access Gaps in Toronto'>
+          <zoom type='entire-view' />
+          <default-map-tool-selection tool='1' />
+        </viewpoint>
+        <viewpoint name='Sheet 2'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Top 10 Neighbourhoods by Childcare Demand (Children Ages 0-4)' />
+      </viewpoints>
+      <active id='25' />
+      <device-preview visible='true' />
+      <simple-id uuid='{A1E18014-FA80-44F5-984B-E87C4F2EF78F}' />
+    </window>
+    <window class='dashboard' name='Story 1'>
+      <viewpoints />
+      <active id='5' />
+      <simple-id uuid='{8717BD1F-11EE-417C-AC3D-3A0598C073FF}' />
     </window>
   </windows>
 </workbook>
